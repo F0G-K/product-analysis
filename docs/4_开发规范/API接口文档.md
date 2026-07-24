@@ -454,7 +454,7 @@ Authorization: Bearer <platform_admin_token>
 ```
 
 **注意事项：**
-- 连续 5 次登录失败后账号锁定 30 分钟
+- 连续 5 次登录失败后账号锁定 15 分钟
 - 失败登录记录写入 `login_audit_logs`
 - 首次登录用户（`is_first_login = true`）需强制修改密码
 

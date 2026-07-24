@@ -63,12 +63,10 @@ CREATE TABLE users (
     sso_external_id     VARCHAR(256),
     created_at          TIMESTAMPTZ  NOT NULL DEFAULT now(),
     updated_at          TIMESTAMPTZ  NOT NULL DEFAULT now(),
-    deleted_at          TIMESTAMPTZ,
-
-    CONSTRAINT uq_users_tenant_email UNIQUE (tenant_id, email)
+    deleted_at          TIMESTAMPTZ
 );
 
-CREATE INDEX idx_users_tenant_email ON users (tenant_id, email) WHERE deleted_at IS NULL;
+CREATE UNIQUE INDEX idx_users_tenant_email ON users (tenant_id, email) WHERE deleted_at IS NULL;
 CREATE INDEX idx_users_sso_external ON users (tenant_id, sso_external_id) WHERE sso_external_id IS NOT NULL AND deleted_at IS NULL;
 CREATE INDEX idx_users_locked ON users (locked_until) WHERE locked_until IS NOT NULL AND deleted_at IS NULL;
 
@@ -274,7 +272,7 @@ CREATE TABLE sync_records (
 ) PARTITION BY RANGE (created_at);
 
 CREATE INDEX idx_sync_records_source ON sync_records (data_source_id, started_at DESC);
-CREATE INDEX idx_sync_records_tenant_time ON sync_records (started_at DESC);
+CREATE INDEX idx_sync_records_tenant_time ON sync_records (tenant_id, started_at DESC);
 
 
 -- ============================================================================
@@ -343,7 +341,7 @@ CREATE TABLE assessment_dimensions (
     id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     model_id          UUID         NOT NULL,
     name              VARCHAR(64)  NOT NULL,
-    weight            NUMERIC(4,3) NOT NULL,
+    weight            NUMERIC(4,3) NOT NULL CHECK (weight >= 0.100 AND weight <= 0.400),
     scoring_direction VARCHAR(8)   NOT NULL DEFAULT 'positive',
     sort_order        INTEGER      NOT NULL DEFAULT 0,
     created_at        TIMESTAMPTZ  NOT NULL DEFAULT now(),

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目与数据源 - 产品管理智能助手平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+        sidebar: { bg: '#0f172a', hover: '#1e293b', active: '#334155' }
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex">
+<aside class="w-60 bg-sidebar-bg text-white flex-shrink-0 flex flex-col min-h-screen">
+  <div class="p-4 border-b border-gray-700">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-cubes text-primary-500 text-xl"></i>
+      <span class="font-bold text-sm">产品管理智能助手</span>
+    </div>
+  </div>
+  <nav class="flex-1 py-4 space-y-0.5 px-2">
+    <a href="01_工作台.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gauge w-4"></i> 工作台
+    </a>
+    <a href="02_需求价值评估_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-scale-balanced w-4"></i> 需求价值评估
+    </a>
+    <a href="03_一致性检查_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-circle-check w-4"></i> 交付物一致性检查
+    </a>
+    <a href="04_问题归因_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-magnifying-glass-chart w-4"></i> 上线版本问题归因
+    </a>
+    <div class="my-3 border-t border-gray-700"></div>
+    <a href="06_项目管理.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-sidebar-active text-white">
+      <i class="fa-solid fa-diagram-project w-4"></i> 项目与数据源
+    </a>
+    <a href="05_报表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-chart-bar w-4"></i> 报表
+    </a>
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gear w-4"></i> 系统管理
+    </a>
+  </nav>
+</aside>
+
+<main class="flex-1 flex flex-col min-h-screen overflow-auto">
+  <header class="bg-white border-b px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div>
+      <h1 class="text-lg font-semibold text-gray-800">项目与数据源</h1>
+      <div class="text-xs text-gray-400">管理项目、成员、外部连接和同步状态</div>
+    </div>
+    <button class="bg-primary-600 hover:bg-primary-700 text-white text-sm px-4 py-2 rounded-lg flex items-center gap-2 transition-colors">
+      <i class="fa-solid fa-plus text-xs"></i> 新建项目
+    </button>
+  </header>
+
+  <div class="p-6 space-y-6">
+    <!-- Tabs -->
+    <div class="flex items-center gap-1 bg-white rounded-lg border p-1 w-fit">
+      <button class="px-4 py-1.5 rounded text-sm font-medium bg-primary-600 text-white">项目列表</button>
+      <button class="px-4 py-1.5 rounded text-sm text-gray-500 hover:bg-gray-50">数据源连接</button>
+      <button class="px-4 py-1.5 rounded text-sm text-gray-500 hover:bg-gray-50">成员管理</button>
+      <button class="px-4 py-1.5 rounded text-sm text-gray-500 hover:bg-gray-50">评估模型配置</button>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+      <!-- Project List -->
+      <div class="col-span-2 space-y-4">
+        <div class="bg-white rounded-xl border shadow-sm p-5 hover:border-primary-300 transition-colors">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center"><i class="fa-solid fa-store text-primary-600"></i></span>
+              <div>
+                <h3 class="font-semibold text-gray-800">电商平台 V3.0</h3>
+                <div class="text-xs text-gray-400 mt-0.5">项目管理员：张产品 · 成员 12 人 · 创建于 2026-06-01</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-xs bg-green-50 text-green-600 font-medium">活跃</span>
+          </div>
+          <div class="grid grid-cols-4 gap-4 mt-4 text-center text-sm">
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">24</div><div class="text-xs text-gray-400">需求数</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">18</div><div class="text-xs text-gray-400">检查次数</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">5</div><div class="text-xs text-gray-400">归因任务</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-green-600">5/5</div><div class="text-xs text-gray-400">数据源连接</div></div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border shadow-sm p-5 hover:border-primary-300 transition-colors">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center"><i class="fa-solid fa-mobile-screen text-teal-600"></i></span>
+              <div>
+                <h3 class="font-semibold text-gray-800">商家 App 2.0</h3>
+                <div class="text-xs text-gray-400 mt-0.5">项目管理员：李经理 · 成员 8 人 · 创建于 2026-06-15</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-xs bg-green-50 text-green-600 font-medium">活跃</span>
+          </div>
+          <div class="grid grid-cols-4 gap-4 mt-4 text-center text-sm">
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">15</div><div class="text-xs text-gray-400">需求数</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">8</div><div class="text-xs text-gray-400">检查次数</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">2</div><div class="text-xs text-gray-400">归因任务</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-amber-600">3/4</div><div class="text-xs text-gray-400">数据源连接</div></div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl border shadow-sm p-5 hover:border-primary-300 transition-colors">
+          <div class="flex items-start justify-between">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center"><i class="fa-solid fa-chart-pie text-purple-600"></i></span>
+              <div>
+                <h3 class="font-semibold text-gray-800">数据平台 1.0</h3>
+                <div class="text-xs text-gray-400 mt-0.5">项目管理员：赵分析 · 成员 5 人 · 创建于 2026-07-01</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full text-xs bg-gray-50 text-gray-500 font-medium">初始化</span>
+          </div>
+          <div class="grid grid-cols-4 gap-4 mt-4 text-center text-sm">
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">3</div><div class="text-xs text-gray-400">需求数</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">0</div><div class="text-xs text-gray-400">检查次数</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-gray-800">0</div><div class="text-xs text-gray-400">归因任务</div></div>
+            <div class="p-2 rounded-lg bg-gray-50"><div class="font-bold text-red-500">1/3</div><div class="text-xs text-gray-400">数据源连接</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Data Sources Panel -->
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b"><h3 class="font-semibold text-gray-800">数据源连接状态</h3></div>
+          <div class="p-5 space-y-3">
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
+              <div class="flex items-center gap-2">
+                <i class="fa-brands fa-gitlab text-orange-500"></i>
+                <span class="text-sm text-gray-700">GitLab</span>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-green-600"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 已连接</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
+              <div class="flex items-center gap-2">
+                <i class="fa-brands fa-jenkins text-red-500"></i>
+                <span class="text-sm text-gray-700">Jenkins</span>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-green-600"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 已连接</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-blue-500"></i>
+                <span class="text-sm text-gray-700">Prometheus</span>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-green-600"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 已连接</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-database text-teal-500"></i>
+                <span class="text-sm text-gray-700">ELK 日志</span>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-green-600"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> 已连接</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-ticket text-amber-500"></i>
+                <span class="text-sm text-gray-700">工单系统</span>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-amber-600"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> 同步延迟 15min</span>
+            </div>
+            <div class="flex items-center justify-between p-2 rounded-lg hover:bg-gray-50">
+              <div class="flex items-center gap-2">
+                <i class="fa-solid fa-gear text-gray-400"></i>
+                <span class="text-sm text-gray-700">配置中心</span>
+              </div>
+              <span class="flex items-center gap-1 text-xs text-gray-400"><span class="w-1.5 h-1.5 rounded-full bg-gray-400"></span> 未配置</span>
+            </div>
+          </div>
+          <div class="px-5 py-3 border-t">
+            <button class="w-full text-sm text-primary-600 hover:text-primary-700 font-medium"><i class="fa-solid fa-plus"></i> 添加数据源连接</button>
+          </div>
+        </div>
+
+        <!-- Sync Status -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b"><h3 class="font-semibold text-gray-800">最近同步记录</h3></div>
+          <div class="p-5 space-y-3 text-sm">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-gray-700">GitLab 代码仓库</div>
+                <div class="text-xs text-gray-400">增量同步 · 新增 3 commits</div>
+              </div>
+              <span class="text-xs text-green-600">5 分钟前</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-gray-700">Prometheus 指标</div>
+                <div class="text-xs text-gray-400">全量同步 · 最近 24h</div>
+              </div>
+              <span class="text-xs text-green-600">12 分钟前</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-gray-700">工单系统</div>
+                <div class="text-xs text-amber-600">增量同步 · 连接超时重试中</div>
+              </div>
+              <span class="text-xs text-amber-600">23 分钟前</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

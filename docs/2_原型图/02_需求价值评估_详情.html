@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>评估详情 - 需求价值评估 - 产品管理智能助手平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+        sidebar: { bg: '#0f172a', hover: '#1e293b', active: '#334155' }
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex">
+<!-- Sidebar (same as before) -->
+<aside class="w-60 bg-sidebar-bg text-white flex-shrink-0 flex flex-col min-h-screen">
+  <div class="p-4 border-b border-gray-700">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-cubes text-primary-500 text-xl"></i>
+      <span class="font-bold text-sm">产品管理智能助手</span>
+    </div>
+  </div>
+  <nav class="flex-1 py-4 space-y-0.5 px-2">
+    <a href="01_工作台.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gauge w-4"></i> 工作台
+    </a>
+    <a href="02_需求价值评估_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-sidebar-active text-white">
+      <i class="fa-solid fa-scale-balanced w-4"></i> 需求价值评估
+    </a>
+    <a href="03_一致性检查_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-circle-check w-4"></i> 交付物一致性检查
+    </a>
+    <a href="04_问题归因_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-magnifying-glass-chart w-4"></i> 上线版本问题归因
+    </a>
+    <div class="my-3 border-t border-gray-700"></div>
+    <a href="06_项目管理.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-diagram-project w-4"></i> 项目与数据源
+    </a>
+    <a href="05_报表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-chart-bar w-4"></i> 报表
+    </a>
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gear w-4"></i> 系统管理
+    </a>
+  </nav>
+</aside>
+
+<main class="flex-1 flex flex-col min-h-screen overflow-auto">
+  <header class="bg-white border-b px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-3">
+      <a href="02_需求价值评估_列表.html" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-lg font-semibold text-gray-800">订单改价功能 · 价值评估</h1>
+          <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-600">待确认</span>
+        </div>
+        <div class="text-xs text-gray-400">REQ-2024-015 · 任务编号 #ASM-2024-042 · 评估模型 V2.1</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="text-sm px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">导出报告</button>
+      <button class="text-sm px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg">确认评估</button>
+    </div>
+  </header>
+
+  <div class="p-6 space-y-6">
+    <!-- Score Overview -->
+    <div class="bg-white rounded-xl border shadow-sm">
+      <div class="p-6">
+        <div class="flex items-start gap-8">
+          <!-- Total Score -->
+          <div class="text-center flex-shrink-0">
+            <div class="relative w-32 h-32 mx-auto">
+              <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 120 120">
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#e5e7eb" stroke-width="10"/>
+                <circle cx="60" cy="60" r="52" fill="none" stroke="#6366f1" stroke-width="10"
+                  stroke-dasharray="327" stroke-dashoffset="57" stroke-linecap="round"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-3xl font-bold text-gray-800">82.6</span>
+                <span class="text-xs text-gray-400">/ 100</span>
+              </div>
+            </div>
+            <div class="mt-2">
+              <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-sm font-bold bg-red-100 text-red-700">建议 P0</span>
+            </div>
+            <div class="mt-1 text-[11px] text-gray-400">优先进入最近可用版本</div>
+          </div>
+
+          <!-- Dimension Scores -->
+          <div class="flex-1 grid grid-cols-5 gap-4">
+            <div class="text-center p-3 rounded-xl bg-primary-50 border border-primary-100">
+              <div class="text-xs text-gray-500 mb-1">用户覆盖</div>
+              <div class="text-2xl font-bold text-primary-700">4.2</div>
+              <div class="text-[10px] text-gray-400">权重 20%</div>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5"><div class="bg-primary-500 h-1.5 rounded-full" style="width:84%"></div></div>
+            </div>
+            <div class="text-center p-3 rounded-xl bg-green-50 border border-green-100">
+              <div class="text-xs text-gray-500 mb-1">业务价值</div>
+              <div class="text-2xl font-bold text-green-700">4.5</div>
+              <div class="text-[10px] text-gray-400">权重 30%</div>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5"><div class="bg-green-500 h-1.5 rounded-full" style="width:90%"></div></div>
+            </div>
+            <div class="text-center p-3 rounded-xl bg-purple-50 border border-purple-100">
+              <div class="text-xs text-gray-500 mb-1">战略匹配度</div>
+              <div class="text-2xl font-bold text-purple-700">3.8</div>
+              <div class="text-[10px] text-gray-400">权重 20%</div>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5"><div class="bg-purple-500 h-1.5 rounded-full" style="width:76%"></div></div>
+            </div>
+            <div class="text-center p-3 rounded-xl bg-amber-50 border border-amber-100">
+              <div class="text-xs text-gray-500 mb-1">实现成本</div>
+              <div class="text-2xl font-bold text-amber-700">2.5</div>
+              <div class="text-[10px] text-gray-400">权重 15% · 反向</div>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5"><div class="bg-amber-500 h-1.5 rounded-full" style="width:50%"></div></div>
+            </div>
+            <div class="text-center p-3 rounded-xl bg-red-50 border border-red-100">
+              <div class="text-xs text-gray-500 mb-1">风险</div>
+              <div class="text-2xl font-bold text-red-600">3.0</div>
+              <div class="text-[10px] text-gray-400">权重 15% · 反向</div>
+              <div class="mt-2 w-full bg-gray-200 rounded-full h-1.5"><div class="bg-red-500 h-1.5 rounded-full" style="width:60%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+      <!-- Left: Dimension Details -->
+      <div class="col-span-2 space-y-6">
+        <!-- Dimension Detail Cards -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">维度评分明细</h3>
+            <span class="text-xs text-gray-400"><i class="fa-solid fa-circle-info"></i> 评分锚点参照 V2.1</span>
+          </div>
+          <div class="divide-y">
+            <!-- 用户覆盖 -->
+            <div class="p-5">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h4 class="font-medium text-gray-800">用户覆盖 <span class="text-xs text-gray-400 font-normal">权重 20% · 正向</span></h4>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs px-2 py-0.5 rounded bg-green-50 text-green-600 font-medium">置信度: 高</span>
+                  <span class="text-lg font-bold text-primary-700">4.2 / 5</span>
+                </div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4 space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5">证据</span>
+                  <span class="text-gray-600">目标用户覆盖全平台 80% 活跃商家（约 12,000 家），日均使用频次预计 500+ 次。<a href="#" class="text-primary-600 hover:underline ml-1">需求文档 §2.1</a></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-medium mt-0.5">推断</span>
+                  <span class="text-gray-600">基于当前客服工单量推算，改价场景占售后工单的 35%，属于高频操作。</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-700 font-medium mt-0.5">缺失</span>
+                  <span class="text-gray-500">未提供移动端客服的使用占比数据，移动端覆盖范围待确认。</span>
+                </div>
+              </div>
+            </div>
+            <!-- 业务价值 -->
+            <div class="p-5">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h4 class="font-medium text-gray-800">业务价值 <span class="text-xs text-gray-400 font-normal">权重 30% · 正向</span></h4>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs px-2 py-0.5 rounded bg-green-50 text-green-600 font-medium">置信度: 高</span>
+                  <span class="text-lg font-bold text-green-700">4.5 / 5</span>
+                </div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4 space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5">证据</span>
+                  <span class="text-gray-600">预计减少客服改价操作时长 70%（从平均 3 分钟降至 1 分钟内），月节省人力成本约 15 万元。<a href="#" class="text-primary-600 hover:underline ml-1">需求文档 §3.2</a></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-medium mt-0.5">推断</span>
+                  <span class="text-gray-600">改价功能的完善可降低因人工改价错误导致的客诉率，预计减少 20% 相关客诉。</span>
+                </div>
+              </div>
+            </div>
+            <!-- 战略匹配度 -->
+            <div class="p-5">
+              <div class="flex items-start justify-between mb-3">
+                <div>
+                  <h4 class="font-medium text-gray-800">战略匹配度 <span class="text-xs text-gray-400 font-normal">权重 20% · 正向</span></h4>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-600 font-medium">置信度: 中</span>
+                  <span class="text-lg font-bold text-purple-700">3.8 / 5</span>
+                </div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4 space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5">证据</span>
+                  <span class="text-gray-600">与年度目标"提升商家服务效率 30%"直接关联。<a href="#" class="text-primary-600 hover:underline ml-1">年度规划 §4.1</a></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-medium mt-0.5">推断</span>
+                  <span class="text-gray-600">该功能为后续"智能议价"和"自动化售后"的基础能力，具有平台价值。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sensitivity Analysis -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">敏感性分析 <span class="text-xs text-gray-400 font-normal">权重上下浮动 10% 后的得分变化</span></h3>
+          </div>
+          <div class="p-5 overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr class="text-xs text-gray-500 border-b">
+                  <th class="text-left py-2 font-medium">场景</th>
+                  <th class="text-center py-2 font-medium">用户覆盖</th>
+                  <th class="text-center py-2 font-medium">业务价值</th>
+                  <th class="text-center py-2 font-medium">战略匹配</th>
+                  <th class="text-center py-2 font-medium">实现成本</th>
+                  <th class="text-center py-2 font-medium">风险</th>
+                  <th class="text-center py-2 font-medium">总分</th>
+                  <th class="text-center py-2 font-medium">优先级</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y">
+                <tr>
+                  <td class="py-2 text-gray-500">当前权重</td>
+                  <td class="py-2 text-center">20%</td><td class="py-2 text-center">30%</td><td class="py-2 text-center">20%</td><td class="py-2 text-center">15%</td><td class="py-2 text-center">15%</td>
+                  <td class="py-2 text-center font-bold text-gray-800">82.6</td><td class="py-2 text-center"><span class="text-xs font-bold text-red-600">P0</span></td>
+                </tr>
+                <tr class="bg-amber-50">
+                  <td class="py-2 text-gray-600">业务价值 +10%</td>
+                  <td class="py-2 text-center">10%</td><td class="py-2 text-center text-amber-600 font-medium">40%</td><td class="py-2 text-center">10%</td><td class="py-2 text-center">15%</td><td class="py-2 text-center">15%</td>
+                  <td class="py-2 text-center font-bold text-gray-800">84.1</td><td class="py-2 text-center"><span class="text-xs font-bold text-red-600">P0</span></td>
+                </tr>
+                <tr class="bg-gray-50">
+                  <td class="py-2 text-gray-600">风险 +10%</td>
+                  <td class="py-2 text-center">15%</td><td class="py-2 text-center">25%</td><td class="py-2 text-center">15%</td><td class="py-2 text-center">10%</td><td class="py-2 text-center text-red-600 font-medium">35%</td>
+                  <td class="py-2 text-center font-bold text-gray-800">78.9</td><td class="py-2 text-center"><span class="text-xs font-bold text-amber-600">P1</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="mt-3 text-xs text-gray-400 flex items-center gap-1">
+              <i class="fa-solid fa-circle-check text-green-500"></i> 结论稳定：在主要权重浮动场景下优先级未发生跨级变化
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Summary & Actions -->
+      <div class="space-y-6">
+        <!-- Requirement Summary -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">需求概要</h3>
+          </div>
+          <div class="p-5 space-y-3 text-sm">
+            <div><span class="text-gray-400">需求名称：</span><span class="text-gray-700">订单改价功能</span></div>
+            <div><span class="text-gray-400">提出人：</span><span class="text-gray-700">李经理（客服部）</span></div>
+            <div><span class="text-gray-400">目标用户：</span><span class="text-gray-700">全平台客服人员、商家运营</span></div>
+            <div><span class="text-gray-400">预计工期：</span><span class="text-gray-700">15 人天 · 依赖支付中台接口改造</span></div>
+            <div><span class="text-gray-400">期望上线：</span><span class="text-gray-700">2026-08-15</span></div>
+            <div class="pt-2 border-t">
+              <div class="text-gray-400 mb-1">背景描述：</div>
+              <p class="text-gray-600 text-xs leading-relaxed">当前客服在处理商家改价请求时，需切换到后台管理系统手动修改，操作路径长、无留痕、易出错。本需求旨在客服工作台提供一站式改价能力，支持按金额/比例改价、自动计算优惠分摊、操作留痕及审批流程。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ranking Comparison -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">同项目需求排名</h3>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex items-center gap-3 p-2 rounded-lg bg-primary-50 border border-primary-100">
+              <span class="text-xs font-bold text-primary-600 w-6">#1</span>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-800 truncate">第三方支付渠道接入</div>
+                <div class="text-xs text-gray-400">总分 85.2 · P0 · 已完成</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-2 rounded-lg border border-amber-200">
+              <span class="text-xs font-bold text-amber-600 w-6">#2</span>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-800 truncate">订单改价功能 ← 当前</div>
+                <div class="text-xs text-gray-400">总分 82.6 · P0 · 待确认</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-2 rounded-lg">
+              <span class="text-xs font-bold text-gray-400 w-6">#3</span>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-800 truncate">批量导出功能</div>
+                <div class="text-xs text-gray-400">总分 71.3 · P1</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-2 rounded-lg">
+              <span class="text-xs font-bold text-gray-400 w-6">#4</span>
+              <div class="flex-1 min-w-0">
+                <div class="text-sm font-medium text-gray-800 truncate">商品详情页改版</div>
+                <div class="text-xs text-gray-400">总分 68.2 · P1</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audit Trail -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">操作记录</h3>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex gap-3 text-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-gray-300 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-gray-700">系统完成评估</div>
+                <div class="text-xs text-gray-400">2026-07-24 15:30:22 · 模型 Claude-5-Opus · 模板 v2.1.0</div>
+              </div>
+            </div>
+            <div class="flex gap-3 text-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-gray-300 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-gray-700">任务提交成功</div>
+                <div class="text-xs text-gray-400">2026-07-24 15:28:00 · 提交人：李经理</div>
+              </div>
+            </div>
+            <div class="flex gap-3 text-sm">
+              <div class="w-1.5 h-1.5 rounded-full bg-gray-300 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-gray-700">输入校验通过</div>
+                <div class="text-xs text-gray-400">2026-07-24 15:27:55 · 5 项必填全部完成</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Risk Warning -->
+        <div class="bg-red-50 border border-red-200 rounded-xl p-4">
+          <div class="flex items-start gap-2">
+            <i class="fa-solid fa-triangle-exclamation text-red-500 mt-0.5"></i>
+            <div>
+              <div class="text-sm font-medium text-red-800">风险提示</div>
+              <ul class="mt-1 space-y-1 text-xs text-red-600">
+                <li>· 支付中台接口改造为关键依赖，当前排期未确认</li>
+                <li>· 资金变动类功能需通过合规审批，建议提前发起</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

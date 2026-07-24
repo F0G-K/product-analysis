@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>原型图索引 - 产品管理智能助手平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; }
+</style>
+</head>
+<body class="flex items-center justify-center p-8">
+<div class="max-w-3xl w-full">
+  <div class="text-center mb-10">
+    <h1 class="text-3xl font-bold text-white mb-2">产品管理智能助手平台</h1>
+    <p class="text-gray-400">原型图 V1.0 · 共 11 个页面 · 基于 PRD V1.2 设计</p>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4">
+    <!-- Login -->
+    <a href="00_登录.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-cyan-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
+          <span class="text-cyan-400 text-lg">🔐</span>
+        </span>
+        <span class="text-white font-semibold">00 · 用户登录</span>
+      </div>
+      <p class="text-gray-400 text-sm">邮箱密码登录、SSO 单点登录、MFA 多因素认证、账号锁定与错误提示</p>
+    </a>
+
+    <!-- Forgot Password -->
+    <a href="00_忘记密码.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-cyan-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
+          <span class="text-cyan-400 text-lg">🔑</span>
+        </span>
+        <span class="text-white font-semibold">00 · 忘记密码</span>
+      </div>
+      <p class="text-gray-400 text-sm">邮箱验证、密码强度检测、重置链接有效期、成功/失效状态反馈</p>
+    </a>
+
+    <!-- Dashboard -->
+    <a href="01_工作台.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center group-hover:bg-indigo-500/30 transition-colors">
+          <span class="text-indigo-400 text-lg">📊</span>
+        </span>
+        <span class="text-white font-semibold">01 · 工作台</span>
+      </div>
+      <p class="text-gray-400 text-sm">统计卡片、待办列表、风险概览、最近任务、快速操作入口</p>
+    </a>
+
+    <!-- Assessment List -->
+    <a href="02_需求价值评估_列表.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-purple-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+          <span class="text-purple-400 text-lg">⚖️</span>
+        </span>
+        <span class="text-white font-semibold">02 · 需求价值评估（列表）</span>
+      </div>
+      <p class="text-gray-400 text-sm">筛选条件、评估任务表格、状态/优先级分布、分页</p>
+    </a>
+
+    <!-- Assessment Detail -->
+    <a href="02_需求价值评估_详情.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-purple-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+          <span class="text-purple-400 text-lg">📋</span>
+        </span>
+        <span class="text-white font-semibold">02 · 需求价值评估（详情）</span>
+      </div>
+      <p class="text-gray-400 text-sm">总分环形图、五维评分卡片、证据链（事实/推断/缺失）、敏感性分析、需求排名、审计记录</p>
+    </a>
+
+    <!-- Consistency Check List -->
+    <a href="03_一致性检查_列表.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-teal-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center group-hover:bg-teal-500/30 transition-colors">
+          <span class="text-teal-400 text-lg">✅</span>
+        </span>
+        <span class="text-white font-semibold">03 · 一致性检查（列表）</span>
+      </div>
+      <p class="text-gray-400 text-sm">统计行（总数/阻断/严重/关闭率/有效率）、检查任务表格、基线编号</p>
+    </a>
+
+    <!-- Consistency Check Detail -->
+    <a href="03_一致性检查_详情.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-teal-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center group-hover:bg-teal-500/30 transition-colors">
+          <span class="text-teal-400 text-lg">🔍</span>
+        </span>
+        <span class="text-white font-semibold">03 · 一致性检查（详情）</span>
+      </div>
+      <p class="text-gray-400 text-sm">基线信息、五类交付物关联、问题按维度分组的对照详情（字段/流程/权限/异常/验收）、问题级别、阻断警告</p>
+    </a>
+
+    <!-- Attribution List -->
+    <a href="04_问题归因_列表.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-blue-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+          <span class="text-blue-400 text-lg">🔎</span>
+        </span>
+        <span class="text-white font-semibold">04 · 问题归因（列表）</span>
+      </div>
+      <p class="text-gray-400 text-sm">筛选、归因任务表格、五类归因标签、置信度指示</p>
+    </a>
+
+    <!-- Attribution Detail -->
+    <a href="04_问题归因_详情.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-blue-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+          <span class="text-blue-400 text-lg">🕐</span>
+        </span>
+        <span class="text-white font-semibold">04 · 问题归因（详情）</span>
+      </div>
+      <p class="text-gray-400 text-sm">异常摘要、分析时间线（多源事件）、证据链（支持/反向/缺失）、候选归因结论、处置建议、人工确认</p>
+    </a>
+
+    <!-- Reports -->
+    <a href="05_报表.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-green-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center group-hover:bg-green-500/30 transition-colors">
+          <span class="text-green-400 text-lg">📈</span>
+        </span>
+        <span class="text-white font-semibold">05 · 报表</span>
+      </div>
+      <p class="text-gray-400 text-sm">KPI 指标卡（覆盖率/发现率/采纳率/可追溯率）、需求趋势、质量趋势、归因分布、确认时长</p>
+    </a>
+
+    <!-- Project Management -->
+    <a href="06_项目管理.html" class="group bg-white/10 backdrop-blur rounded-xl p-5 border border-white/10 hover:border-amber-400/50 hover:bg-white/15 transition-all">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center group-hover:bg-amber-500/30 transition-colors">
+          <span class="text-amber-400 text-lg">⚙️</span>
+        </span>
+        <span class="text-white font-semibold">06 · 项目与数据源管理</span>
+      </div>
+      <p class="text-gray-400 text-sm">项目列表（统计/状态）、数据源连接状态、最近同步记录</p>
+    </a>
+  </div>
+
+  <div class="mt-10 text-center text-gray-500 text-xs">
+    <p>原型图基于 PRD V1.2 设计 | 覆盖完整功能范围：登录/认证、工作台、价值评估、一致性检查、问题归因、报表、项目管理</p>
+    <p class="mt-1">所有页面可通过左侧导航菜单互相跳转</p>
+  </div>
+</div>
+</body>
+</html>

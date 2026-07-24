@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>归因详情 - 上线版本问题归因 - 产品管理智能助手平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+        sidebar: { bg: '#0f172a', hover: '#1e293b', active: '#334155' }
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex">
+<aside class="w-60 bg-sidebar-bg text-white flex-shrink-0 flex flex-col min-h-screen">
+  <div class="p-4 border-b border-gray-700">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-cubes text-primary-500 text-xl"></i>
+      <span class="font-bold text-sm">产品管理智能助手</span>
+    </div>
+  </div>
+  <nav class="flex-1 py-4 space-y-0.5 px-2">
+    <a href="01_工作台.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gauge w-4"></i> 工作台
+    </a>
+    <a href="02_需求价值评估_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-scale-balanced w-4"></i> 需求价值评估
+    </a>
+    <a href="03_一致性检查_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-circle-check w-4"></i> 交付物一致性检查
+    </a>
+    <a href="04_问题归因_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-sidebar-active text-white">
+      <i class="fa-solid fa-magnifying-glass-chart w-4"></i> 上线版本问题归因
+    </a>
+    <div class="my-3 border-t border-gray-700"></div>
+    <a href="06_项目管理.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-diagram-project w-4"></i> 项目与数据源
+    </a>
+    <a href="05_报表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-chart-bar w-4"></i> 报表
+    </a>
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gear w-4"></i> 系统管理
+    </a>
+  </nav>
+</aside>
+
+<main class="flex-1 flex flex-col min-h-screen overflow-auto">
+  <header class="bg-white border-b px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-3">
+      <a href="04_问题归因_列表.html" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-lg font-semibold text-gray-800">v2.8.1 支付成功率下降 · 问题归因</h1>
+          <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600">待确认</span>
+        </div>
+        <div class="text-xs text-gray-400">INC-2024-008 · 任务编号 #ATR-2024-011 · 归因模型 V1.0 · 2026-07-24 11:00</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="text-sm px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">导出报告</button>
+      <button class="text-sm px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg">确认结论</button>
+    </div>
+  </header>
+
+  <div class="p-6 space-y-6">
+    <!-- Anomaly Summary -->
+    <div class="bg-white rounded-xl border shadow-sm">
+      <div class="px-5 py-3 border-b">
+        <h3 class="font-semibold text-gray-800">异常摘要</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-4 gap-6 text-sm">
+          <div><span class="text-gray-400">异常名称：</span><span class="text-gray-700 font-medium">支付成功率下降</span></div>
+          <div><span class="text-gray-400">关联版本：</span><span class="px-2 py-0.5 rounded text-xs bg-gray-100 text-gray-600">v2.8.1</span></div>
+          <div><span class="text-gray-400">首次发现：</span><span class="text-gray-700">2026-07-24 08:15</span></div>
+          <div><span class="text-gray-400">当前状态：</span><span class="text-xs text-red-600 font-medium">● 持续中</span></div>
+          <div><span class="text-gray-400">时间窗：</span><span class="text-gray-700">07-24 08:15 - 至今（未恢复）</span></div>
+          <div><span class="text-gray-400">影响范围：</span><span class="text-red-600">全平台支付用户，成功率 99.2% → 94.7%</span></div>
+          <div><span class="text-gray-400">用户表现：</span><span class="text-gray-700">支付页面转圈、超时提示、部分用户重复扣款</span></div>
+          <div><span class="text-gray-400">处置状态：</span><span class="text-gray-700">已临时关闭新支付渠道开关，观察中</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+      <!-- Left: Timeline -->
+      <div class="col-span-2 space-y-6">
+        <!-- Timeline -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b flex items-center justify-between">
+            <h3 class="font-semibold text-gray-800">分析时间线</h3>
+            <span class="text-xs text-gray-400">项目时区 UTC+8 · 共 28 条事件</span>
+          </div>
+          <div class="p-5">
+            <div class="relative pl-6 border-l-2 border-gray-200 space-y-5">
+              <!-- Timeline Item: Alert -->
+              <div class="relative">
+                <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-red-500 border-2 border-white"></div>
+                <div class="text-xs text-red-500 font-medium mb-1">07-24 08:15 · 监控告警</div>
+                <div class="bg-red-50 rounded-lg p-3">
+                  <div class="text-sm font-medium text-red-800">支付成功率跌破阈值</div>
+                  <div class="text-xs text-red-600 mt-1">监控指标 payment_success_rate 从 99.2% 骤降至 94.7%，触发 P0 告警</div>
+                  <a href="#" class="text-xs text-red-500 hover:underline mt-1 inline-block">来源：Prometheus · payment_success_rate · 查看原始数据 →</a>
+                </div>
+              </div>
+              <!-- Timeline Item: Deploy -->
+              <div class="relative">
+                <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-blue-500 border-2 border-white"></div>
+                <div class="text-xs text-blue-500 font-medium mb-1">07-24 06:30 · 版本发布</div>
+                <div class="bg-blue-50 rounded-lg p-3">
+                  <div class="text-sm font-medium text-blue-800">v2.8.1 生产发布完成</div>
+                  <div class="text-xs text-blue-600 mt-1">包含 3 个 commit：新增支付宝国际版渠道、支付超时配置调整、日志格式优化</div>
+                  <a href="#" class="text-xs text-blue-500 hover:underline mt-1 inline-block">来源：Jenkins · Build #2841 · commit abc123, def456, ghi789 →</a>
+                </div>
+              </div>
+              <!-- Timeline Item: Config Change -->
+              <div class="relative">
+                <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-orange-500 border-2 border-white"></div>
+                <div class="text-xs text-orange-500 font-medium mb-1">07-24 06:32 · 配置变更</div>
+                <div class="bg-orange-50 rounded-lg p-3">
+                  <div class="text-sm font-medium text-orange-800">支付超时时间参数变更</div>
+                  <div class="text-xs text-orange-600 mt-1">payment.timeout_ms 从 30000ms 变更为 5000ms，变更人：@张研发</div>
+                  <a href="#" class="text-xs text-orange-500 hover:underline mt-1 inline-block">来源：配置中心 · payment-svc.yaml · 变更记录 #CFG-2841 →</a>
+                </div>
+              </div>
+              <!-- Timeline Item: Code Change -->
+              <div class="relative">
+                <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-gray-400 border-2 border-white"></div>
+                <div class="text-xs text-gray-500 font-medium mb-1">07-23 18:00 · 代码合并</div>
+                <div class="bg-gray-50 rounded-lg p-3">
+                  <div class="text-sm font-medium text-gray-700">PR #2841 合并至 main</div>
+                  <div class="text-xs text-gray-500 mt-1">新增第三方支付渠道路由逻辑，新增 PaymentChannelRouter 类</div>
+                  <a href="#" class="text-xs text-gray-400 hover:underline mt-1 inline-block">来源：GitLab · MR !2841 · 作者：@张研发 →</a>
+                </div>
+              </div>
+              <!-- Timeline Item: Test -->
+              <div class="relative">
+                <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-green-500 border-2 border-white"></div>
+                <div class="text-xs text-green-500 font-medium mb-1">07-23 15:00 · 测试完成</div>
+                <div class="bg-green-50 rounded-lg p-3">
+                  <div class="text-sm font-medium text-green-800">v2.8.1 回归测试通过</div>
+                  <div class="text-xs text-green-600 mt-1">测试用例 45 条全部通过，未覆盖支付超时场景</div>
+                  <a href="#" class="text-xs text-green-500 hover:underline mt-1 inline-block">来源：TestLink · TestRun #882 · 通过率 100% →</a>
+                </div>
+              </div>
+              <!-- Timeline Item: Ticket -->
+              <div class="relative">
+                <div class="absolute -left-[25px] w-3 h-3 rounded-full bg-amber-500 border-2 border-white"></div>
+                <div class="text-xs text-amber-500 font-medium mb-1">07-24 08:30 · 用户工单</div>
+                <div class="bg-amber-50 rounded-lg p-3">
+                  <div class="text-sm font-medium text-amber-800">大量用户反馈支付失败</div>
+                  <div class="text-xs text-amber-600 mt-1">15 分钟内收到 47 条支付相关客诉，集中在"支付转圈后提示超时"</div>
+                  <a href="#" class="text-xs text-amber-500 hover:underline mt-1 inline-block">来源：工单系统 · #TKT-2401 ~ #TKT-2447 →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Evidence Chain -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">证据链分析</h3>
+          </div>
+          <div class="p-5 space-y-4">
+            <div class="flex items-center gap-2 text-sm text-gray-500 mb-3">
+              <span class="px-2 py-0.5 rounded text-[10px] bg-blue-100 text-blue-700 font-medium">可验证事实</span>
+              <span class="text-xs">带标签的证据为可直接验证的事实</span>
+              <span class="px-2 py-0.5 rounded text-[10px] bg-purple-100 text-purple-700 font-medium ml-2">模型推断</span>
+              <span class="text-xs">带标签的为模型基于锚点的推断</span>
+            </div>
+            <!-- Evidence: Supporting -->
+            <div class="border border-green-200 rounded-lg p-4 bg-green-50/50">
+              <div class="text-sm font-medium text-green-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-check text-green-500 text-xs"></i> 支持证据</div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5 flex-shrink-0">事实</span>
+                  <span class="text-gray-600">配置变更时间（06:32）与异常开始时间（08:15）高度相关，时间差 1h43min，在支付业务低峰期变更后首个高峰期暴露。<a href="#" class="text-primary-600 hover:underline">配置中心 #CFG-2841</a></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5 flex-shrink-0">事实</span>
+                  <span class="text-gray-600">payment.timeout_ms 从 30000ms 改为 5000ms，降低至原来的 1/6，与用户反馈的"转圈后提示超时"症状一致。<a href="#" class="text-primary-600 hover:underline">配置中心 #CFG-2841</a></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5 flex-shrink-0">事实</span>
+                  <span class="text-gray-600">日志显示大量 payment_timeout 错误，错误时间集中在 08:15 之后，与配置变更后首个业务高峰期吻合。<a href="#" class="text-primary-600 hover:underline">ELK · payment-svc error logs</a></span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 text-purple-700 font-medium mt-0.5 flex-shrink-0">推断</span>
+                  <span class="text-gray-600">新增的第三方支付渠道（支付宝国际版）平均响应时间约 8-12s，远超 5s 超时阈值，导致该渠道支付全部超时。</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Evidence: Counter -->
+            <div class="border border-red-200 rounded-lg p-4 bg-red-50/50">
+              <div class="text-sm font-medium text-red-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-xmark text-red-500 text-xs"></i> 反向证据</div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-700 font-medium mt-0.5 flex-shrink-0">事实</span>
+                  <span class="text-gray-600">v2.8.0 版本在配置为 30000ms 时支付成功率稳定在 99% 以上，排除了非配置因素的基线漂移。<a href="#" class="text-primary-600 hover:underline">监控面板 · 30 天趋势</a></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Evidence: Missing -->
+            <div class="border border-amber-200 rounded-lg p-4 bg-amber-50/50">
+              <div class="text-sm font-medium text-amber-800 mb-2 flex items-center gap-2"><i class="fa-solid fa-circle-question text-amber-500 text-xs"></i> 缺失证据</div>
+              <div class="space-y-2 text-sm">
+                <div class="flex items-start gap-2 text-gray-600">
+                  <span class="text-[10px] text-gray-400 mt-0.5">·</span>
+                  <span>未获取到配置变更的审批记录和变更原因说明</span>
+                </div>
+                <div class="flex items-start gap-2 text-gray-600">
+                  <span class="text-[10px] text-gray-400 mt-0.5">·</span>
+                  <span>第三方支付渠道的 SLA 和平均响应时间基准数据未纳入分析</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Attribution Result -->
+      <div class="space-y-6">
+        <!-- Attribution Conclusion -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">候选归因结论</h3>
+          </div>
+          <div class="p-5 space-y-4">
+            <!-- Primary -->
+            <div class="p-4 rounded-xl border-2 border-orange-300 bg-orange-50">
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded text-xs font-bold bg-orange-100 text-orange-700">主要来源</span>
+                <span class="text-xs text-amber-600 font-medium">置信度: 中</span>
+              </div>
+              <div class="text-base font-bold text-orange-800 mb-2">配置变更</div>
+              <p class="text-sm text-gray-600">v2.8.1 发布时将 payment.timeout_ms 从 30000ms 调整为 5000ms，导致支付超时阈值过低。新增支付宝国际版渠道响应时间约 8-12s，超出新阈值后全部超时，拉低整体成功率。</p>
+            </div>
+            <!-- Contributing -->
+            <div class="p-3 rounded-xl border border-purple-200 bg-purple-50/50">
+              <div class="flex items-center justify-between mb-1">
+                <span class="px-2 py-0.5 rounded text-xs font-medium bg-purple-100 text-purple-700">促成因素</span>
+                <span class="text-xs text-purple-500 font-medium">置信度: 中</span>
+              </div>
+              <div class="text-sm font-medium text-purple-800 mb-1">实现错误</div>
+              <p class="text-xs text-gray-600">新增渠道未设置独立的超时配置，复用了全局 payment.timeout_ms。渠道差异化超时策略缺失，属于实现不完整。</p>
+            </div>
+            <!-- Alternative -->
+            <div class="p-3 rounded-xl border border-gray-200 bg-gray-50">
+              <div class="flex items-center justify-between mb-1">
+                <span class="px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-500">待验证候选</span>
+                <span class="text-xs text-gray-400 font-medium">置信度: 低</span>
+              </div>
+              <div class="text-sm font-medium text-gray-700 mb-1">需求遗漏</div>
+              <p class="text-xs text-gray-500">PRD 未定义第三方支付渠道的超时和降级策略，测试用例也未覆盖超时场景。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggestions -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">处置建议</h3>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="flex items-start gap-3 p-3 rounded-lg bg-red-50">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-700 flex-shrink-0">短期</span>
+              <div class="text-sm text-red-800">
+                <div class="font-medium">立即回滚 payment.timeout_ms 至 30000ms</div>
+                <div class="text-xs text-red-600 mt-0.5">建议角色：SRE/运维 · 预计恢复时间 5 分钟</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-lg bg-blue-50">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-100 text-blue-700 flex-shrink-0">短期</span>
+              <div class="text-sm text-blue-800">
+                <div class="font-medium">临时关闭支付宝国际版支付渠道开关</div>
+                <div class="text-xs text-blue-600 mt-0.5">建议角色：研发负责人 · 通过配置中心执行</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-600 flex-shrink-0">长期</span>
+              <div class="text-sm text-gray-700">
+                <div class="font-medium">建立渠道级别独立超时配置</div>
+                <div class="text-xs text-gray-500 mt-0.5">在 PaymentChannelRouter 中支持 per-channel timeout，默认值继承全局配置</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-lg bg-gray-50">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-600 flex-shrink-0">长期</span>
+              <div class="text-sm text-gray-700">
+                <div class="font-medium">增加配置变更前置检查规则</div>
+                <div class="text-xs text-gray-500 mt-0.5">配置变更关联 SLA 检测：当 timeout 值低于下游平均响应时间的 2 倍时阻断变更</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Human Confirmation -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">人工确认</h3>
+          </div>
+          <div class="p-5 space-y-3">
+            <div class="text-sm text-gray-500">待负责人确认归因结论，可接受、修正或提出异议。</div>
+            <div class="flex items-center gap-2">
+              <button class="flex-1 py-2 bg-green-600 hover:bg-green-700 text-white text-sm rounded-lg transition-colors"><i class="fa-solid fa-check"></i> 接受结论</button>
+              <button class="flex-1 py-2 border border-amber-300 bg-amber-50 hover:bg-amber-100 text-amber-700 text-sm rounded-lg transition-colors"><i class="fa-solid fa-pen-to-square"></i> 修正归因</button>
+              <button class="flex-1 py-2 border border-red-200 bg-red-50 hover:bg-red-100 text-red-600 text-sm rounded-lg transition-colors"><i class="fa-solid fa-flag"></i> 提出异议</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Meta Info -->
+        <div class="bg-white rounded-xl border shadow-sm">
+          <div class="px-5 py-3 border-b">
+            <h3 class="font-semibold text-gray-800">分析元信息</h3>
+          </div>
+          <div class="p-5 space-y-2 text-sm">
+            <div class="flex justify-between"><span class="text-gray-400">大模型版本：</span><span class="text-gray-700">Claude-5-Opus</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">提示词模板：</span><span class="text-gray-700">attribution-v1.2.0</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">温度参数：</span><span class="text-gray-700">0.2</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">输入事件数：</span><span class="text-gray-700">28 条</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">分析耗时：</span><span class="text-gray-700">8 分 23 秒</span></div>
+            <div class="flex justify-between"><span class="text-gray-400">Token 用量：</span><span class="text-gray-700">输入 12,450 / 输出 3,280</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>检查详情 - 交付物一致性检查 - 产品管理智能助手平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
+        sidebar: { bg: '#0f172a', hover: '#1e293b', active: '#334155' }
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex">
+<aside class="w-60 bg-sidebar-bg text-white flex-shrink-0 flex flex-col min-h-screen">
+  <div class="p-4 border-b border-gray-700">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-cubes text-primary-500 text-xl"></i>
+      <span class="font-bold text-sm">产品管理智能助手</span>
+    </div>
+  </div>
+  <nav class="flex-1 py-4 space-y-0.5 px-2">
+    <a href="01_工作台.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gauge w-4"></i> 工作台
+    </a>
+    <a href="02_需求价值评估_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-scale-balanced w-4"></i> 需求价值评估
+    </a>
+    <a href="03_一致性检查_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm bg-sidebar-active text-white">
+      <i class="fa-solid fa-circle-check w-4"></i> 交付物一致性检查
+    </a>
+    <a href="04_问题归因_列表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-magnifying-glass-chart w-4"></i> 上线版本问题归因
+    </a>
+    <div class="my-3 border-t border-gray-700"></div>
+    <a href="06_项目管理.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-diagram-project w-4"></i> 项目与数据源
+    </a>
+    <a href="05_报表.html" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-chart-bar w-4"></i> 报表
+    </a>
+    <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-300 hover:bg-sidebar-hover hover:text-white transition-colors">
+      <i class="fa-solid fa-gear w-4"></i> 系统管理
+    </a>
+  </nav>
+</aside>
+
+<main class="flex-1 flex flex-col min-h-screen overflow-auto">
+  <header class="bg-white border-b px-6 py-3 flex items-center justify-between sticky top-0 z-10">
+    <div class="flex items-center gap-3">
+      <a href="03_一致性检查_列表.html" class="text-gray-400 hover:text-gray-600"><i class="fa-solid fa-arrow-left"></i></a>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-lg font-semibold text-gray-800">支付模块一致性检查</h1>
+          <span class="px-2 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-600">2 项阻断未关闭</span>
+        </div>
+        <div class="text-xs text-gray-400">基线 BL-2024-003 · 全量检查 · 规则版本 V1.3 · 2026-07-24 14:15</div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="text-sm px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">导出报告</button>
+      <button class="text-sm px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg">发起复检</button>
+    </div>
+  </header>
+
+  <div class="p-6 space-y-6">
+    <!-- Baseline Info & Deliverables -->
+    <div class="grid grid-cols-3 gap-6">
+      <div class="col-span-2 bg-white rounded-xl border shadow-sm">
+        <div class="px-5 py-3 border-b">
+          <h3 class="font-semibold text-gray-800">检查基线信息</h3>
+        </div>
+        <div class="p-5">
+          <div class="grid grid-cols-2 gap-4 text-sm">
+            <div><span class="text-gray-400">基线编号：</span><span class="text-gray-700">BL-2024-003</span></div>
+            <div><span class="text-gray-400">检查类型：</span><span class="px-2 py-0.5 rounded text-xs bg-blue-50 text-blue-600">全量检查</span></div>
+            <div><span class="text-gray-400">关联需求：</span><span class="text-gray-700">REQ-2024-011 支付模块 v2.1</span></div>
+            <div><span class="text-gray-400">规则版本：</span><span class="text-gray-700">通用 V1.3 + 项目规则 3 条</span></div>
+            <div><span class="text-gray-400">创建人：</span><span class="text-gray-700">王测试</span></div>
+            <div><span class="text-gray-400">创建时间：</span><span class="text-gray-700">2026-07-24 14:15:00</span></div>
+            <div><span class="text-gray-400">大模型版本：</span><span class="text-gray-700">Claude-5-Opus · 模板 v2.1.0 · 温度 0.2</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border shadow-sm">
+        <div class="px-5 py-3 border-b">
+          <h3 class="font-semibold text-gray-800">问题概览</h3>
+        </div>
+        <div class="p-5 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-600 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-red-500"></span> 阻断</span>
+            <span class="text-lg font-bold text-red-600">2</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-600 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-amber-500"></span> 严重</span>
+            <span class="text-lg font-bold text-amber-600">4</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-600 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-blue-400"></span> 一般</span>
+            <span class="text-lg font-bold text-blue-500">5</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-600 flex items-center gap-2"><span class="w-3 h-3 rounded-full bg-gray-400"></span> 提示</span>
+            <span class="text-lg font-bold text-gray-500">3</span>
+          </div>
+          <div class="pt-3 border-t flex justify-between text-sm">
+            <span class="text-gray-500">总计</span><span class="font-bold text-gray-800">14 项</span>
+          </div>
+          <div class="text-xs text-gray-400">关闭率: 0% · 已关闭 0 / 14</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deliverables -->
+    <div class="bg-white rounded-xl border shadow-sm">
+      <div class="px-5 py-3 border-b">
+        <h3 class="font-semibold text-gray-800">关联交付物</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-5 gap-4 text-sm">
+          <div class="p-3 rounded-lg border border-primary-200 bg-primary-50">
+            <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-file-lines text-primary-500 text-xs"></i><span class="font-medium text-gray-700">PRD（主版本）</span></div>
+            <div class="text-xs text-gray-500">支付模块PRD_V2.1.docx</div>
+            <div class="text-xs text-gray-400">2026-07-20 · 版本 2.1</div>
+          </div>
+          <div class="p-3 rounded-lg border border-gray-200">
+            <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-pen-ruler text-teal-500 text-xs"></i><span class="font-medium text-gray-700">原型说明</span></div>
+            <div class="text-xs text-gray-500">支付-原型_V3.0.fig</div>
+            <div class="text-xs text-gray-400">2026-07-21 · 版本 3.0</div>
+          </div>
+          <div class="p-3 rounded-lg border border-gray-200">
+            <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-code text-purple-500 text-xs"></i><span class="font-medium text-gray-700">接口文档</span></div>
+            <div class="text-xs text-gray-500">payment-api-v2.yaml</div>
+            <div class="text-xs text-gray-400">2026-07-22 · 版本 2.0</div>
+          </div>
+          <div class="p-3 rounded-lg border border-gray-200">
+            <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-chart-line text-amber-500 text-xs"></i><span class="font-medium text-gray-700">埋点方案</span></div>
+            <div class="text-xs text-gray-500">支付埋点_V1.2.xlsx</div>
+            <div class="text-xs text-gray-400">2026-07-19 · 版本 1.2</div>
+          </div>
+          <div class="p-3 rounded-lg border border-gray-200">
+            <div class="flex items-center gap-2 mb-1"><i class="fa-solid fa-list-check text-green-500 text-xs"></i><span class="font-medium text-gray-700">测试用例</span></div>
+            <div class="text-xs text-gray-500">支付-测试用例_V2.1.xlsx</div>
+            <div class="text-xs text-gray-400">2026-07-23 · 版本 2.1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Issues by Dimension -->
+    <div class="bg-white rounded-xl border shadow-sm">
+      <div class="px-5 py-3 border-b flex items-center justify-between">
+        <h3 class="font-semibold text-gray-800">检查问题清单</h3>
+        <div class="flex items-center gap-2 text-xs">
+          <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-50">全部</button>
+          <button class="px-3 py-1 rounded bg-red-50 text-red-600 border border-red-200">阻断</button>
+          <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-50">严重</button>
+          <button class="px-3 py-1 rounded border text-gray-500 hover:bg-gray-50">一般</button>
+        </div>
+      </div>
+
+      <!-- Issue 1: Blocking - Field -->
+      <div class="border-b">
+        <div class="px-5 py-4">
+          <div class="flex items-start gap-4">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-700 flex-shrink-0">阻断 #1</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">字段</span>
+                <h4 class="font-medium text-gray-800">手机号必填属性不一致</h4>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-green-50 text-green-600">置信度: 高</span>
+              </div>
+              <div class="text-sm text-gray-600 space-y-1.5">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">PRD §3.1:</span>
+                  <span>用户下单时手机号为<mark class="bg-red-50 px-1">必填</mark>字段</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">接口 §POST /order:</span>
+                  <span>phone 字段定义为 <mark class="bg-amber-50 px-1">optional</mark></span>
+                </div>
+                <div class="text-[11px] text-amber-600 mt-1"><i class="fa-solid fa-triangle-exclamation"></i> 影响：可能导致订单创建时缺少联系方式，无法发送通知</div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-gray-400">建议修正：将接口 phone 改为 required</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-500">推荐角色：研发负责人</span>
+              </div>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs text-gray-400">状态：</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-red-50 text-red-600 font-medium">待确认</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 2: Blocking - Permissions -->
+      <div class="border-b">
+        <div class="px-5 py-4">
+          <div class="flex items-start gap-4">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-red-100 text-red-700 flex-shrink-0">阻断 #2</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">权限</span>
+                <h4 class="font-medium text-gray-800">退款操作权限定义冲突</h4>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-green-50 text-green-600">置信度: 高</span>
+              </div>
+              <div class="text-sm text-gray-600 space-y-1.5">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">PRD §5.2:</span>
+                  <span>退款操作<mark class="bg-red-50 px-1">仅管理员</mark>可执行</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">接口 §POST /refund:</span>
+                  <span>权限定义为 <mark class="bg-amber-50 px-1">role: member</mark>（普通成员可调用）</span>
+                </div>
+                <div class="text-xs text-red-600 mt-1"><i class="fa-solid fa-shield-halved"></i> 此问题为越权风险，涉及资金安全</div>
+              </div>
+              <div class="flex items-center gap-3 mt-3">
+                <span class="text-xs text-gray-400">建议修正：接口层增加角色校验，限制为 admin</span>
+                <span class="text-xs px-2 py-0.5 rounded bg-gray-100 text-gray-500">推荐角色：研发负责人 + 产品负责人</span>
+              </div>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs text-gray-400">状态：</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-red-50 text-red-600 font-medium">待确认</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 3: Severe - Flow -->
+      <div class="border-b">
+        <div class="px-5 py-4">
+          <div class="flex items-start gap-4">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-700 flex-shrink-0">严重 #3</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">流程</span>
+                <h4 class="font-medium text-gray-800">原型存在撤回入口，PRD 未定义撤回状态</h4>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-green-50 text-green-600">置信度: 高</span>
+              </div>
+              <div class="text-sm text-gray-600 space-y-1.5">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">原型 支付结果页:</span>
+                  <span>包含<mark class="bg-amber-50 px-1">"撤回支付"</mark>按钮及二次确认弹窗</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">PRD §3:</span>
+                  <span>状态流转中<mark class="bg-red-50 px-1">未定义"已撤回"</mark>状态及对应处理逻辑</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs text-gray-400">状态：</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-600 font-medium">已认领 · 赵研发</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 4: Severe - Exception -->
+      <div class="border-b">
+        <div class="px-5 py-4">
+          <div class="flex items-start gap-4">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-100 text-amber-700 flex-shrink-0">严重 #4</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">异常状态</span>
+                <h4 class="font-medium text-gray-800">测试用例未覆盖支付超时后的补偿流程</h4>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-amber-50 text-amber-600">置信度: 中</span>
+              </div>
+              <div class="text-sm text-gray-600 space-y-1.5">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">PRD §7.1:</span>
+                  <span>定义了支付超时 30s 后自动取消并触发补偿</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">测试用例:</span>
+                  <span>缺少超时场景的测试用例，仅有成功和失败路径</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs text-gray-400">状态：</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-amber-50 text-amber-600 font-medium">待确认</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Issue 5: General - Acceptance -->
+      <div class="border-b">
+        <div class="px-5 py-4">
+          <div class="flex items-start gap-4">
+            <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-blue-100 text-blue-700 flex-shrink-0">一般 #5</span>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 text-gray-500">验收条件</span>
+                <h4 class="font-medium text-gray-800">PRD 定义支付成功率 ≥99.5%，埋点缺少失败事件</h4>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-green-50 text-green-600">置信度: 高</span>
+              </div>
+              <div class="text-sm text-gray-600 space-y-1.5">
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">PRD §8.1:</span>
+                  <span>验收指标：支付成功率 ≥99.5%</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="text-[10px] text-gray-400 flex-shrink-0 mt-0.5">埋点方案:</span>
+                  <span>仅定义了 payment_success 事件，缺少 payment_failed / payment_timeout 事件</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 mt-2">
+                <span class="text-xs text-gray-400">状态：</span>
+                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-50 text-gray-500 font-medium">待确认</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Warning Banner -->
+      <div class="px-5 py-3 bg-red-50 flex items-center gap-2">
+        <i class="fa-solid fa-circle-exclamation text-red-500"></i>
+        <span class="text-sm text-red-700 font-medium">存在 2 项未关闭阻断级问题，提测前必须关闭或获得书面豁免</span>
+      </div>
+    </div>
+
+    <!-- Dimention Distribution -->
+    <div class="bg-white rounded-xl border shadow-sm">
+      <div class="px-5 py-3 border-b">
+        <h3 class="font-semibold text-gray-800">问题维度分布</h3>
+      </div>
+      <div class="p-5">
+        <div class="grid grid-cols-5 gap-4 text-center">
+          <div class="p-4 rounded-xl bg-gray-50">
+            <div class="text-2xl font-bold text-gray-800">3</div>
+            <div class="text-xs text-gray-500 mt-1">字段</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50">
+            <div class="text-2xl font-bold text-gray-800">2</div>
+            <div class="text-xs text-gray-500 mt-1">流程</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50">
+            <div class="text-2xl font-bold text-red-600">3</div>
+            <div class="text-xs text-gray-500 mt-1">权限</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50">
+            <div class="text-2xl font-bold text-gray-800">4</div>
+            <div class="text-xs text-gray-500 mt-1">异常状态</div>
+          </div>
+          <div class="p-4 rounded-xl bg-gray-50">
+            <div class="text-2xl font-bold text-gray-800">2</div>
+            <div class="text-xs text-gray-500 mt-1">验收条件</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

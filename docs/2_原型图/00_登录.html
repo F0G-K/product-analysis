@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登录 - 产品管理智能助手平台</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: { 50: '#eef2ff', 100: '#e0e7ff', 200: '#c7d2fe', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' }
+      }
+    }
+  }
+}
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="min-h-screen flex" style="background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);">
+<!-- Left Decorative -->
+<div class="hidden lg:flex w-1/2 items-center justify-center p-16">
+  <div class="text-white max-w-lg">
+    <div class="flex items-center gap-3 mb-8">
+      <span class="w-12 h-12 rounded-xl bg-primary-500/30 flex items-center justify-center">
+        <i class="fa-solid fa-cubes text-primary-400 text-2xl"></i>
+      </span>
+      <div>
+        <h1 class="text-2xl font-bold">产品管理智能助手</h1>
+        <p class="text-sm text-gray-400">Product Management Intelligence</p>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <div class="flex items-start gap-4">
+        <span class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-scale-balanced text-primary-400"></i></span>
+        <div><h3 class="font-medium text-white">需求价值评估</h3><p class="text-sm text-gray-400">五维量化评分，可追溯的证据链，让每项需求决策有据可依</p></div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-circle-check text-teal-400"></i></span>
+        <div><h3 class="font-medium text-white">交付物一致性检查</h3><p class="text-sm text-gray-400">跨文档语义比对，提测前发现冲突与遗漏，降低返工成本</p></div>
+      </div>
+      <div class="flex items-start gap-4">
+        <span class="w-10 h-10 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0"><i class="fa-solid fa-magnifying-glass-chart text-blue-400"></i></span>
+        <div><h3 class="font-medium text-white">版本问题归因</h3><p class="text-sm text-gray-400">多源证据聚合，自动构建时间线和推理链，快速定位问题来源</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Right Login Form -->
+<div class="w-full lg:w-1/2 flex items-center justify-center p-8">
+  <div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <div class="lg:hidden flex items-center justify-center gap-2 mb-4">
+        <span class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center">
+          <i class="fa-solid fa-cubes text-primary-600"></i>
+        </span>
+        <span class="font-bold text-gray-800">产品管理智能助手</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-800">欢迎回来</h2>
+      <p class="text-sm text-gray-500 mt-1">登录你的账号以继续</p>
+    </div>
+
+    <!-- SSO Button -->
+    <button class="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg border-2 border-gray-200 text-gray-700 hover:border-primary-300 hover:bg-primary-50 transition-all text-sm font-medium mb-4">
+      <i class="fa-solid fa-building text-gray-400"></i> 企业单点登录（SSO）
+    </button>
+
+    <!-- Divider -->
+    <div class="flex items-center gap-3 mb-4">
+      <div class="flex-1 border-t border-gray-200"></div>
+      <span class="text-xs text-gray-400">或使用邮箱登录</span>
+      <div class="flex-1 border-t border-gray-200"></div>
+    </div>
+
+    <!-- Login Form -->
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1">邮箱地址</label>
+        <div class="relative">
+          <i class="fa-solid fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+          <input type="email" placeholder="name@company.com" class="w-full pl-10 pr-3 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500 transition-shadow">
+        </div>
+      </div>
+      <div>
+        <div class="flex items-center justify-between mb-1">
+          <label class="block text-sm font-medium text-gray-700">密码</label>
+          <a href="00_忘记密码.html" class="text-xs text-primary-600 hover:text-primary-700 font-medium">忘记密码？</a>
+        </div>
+        <div class="relative">
+          <i class="fa-solid fa-lock absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+          <input type="password" placeholder="输入密码" class="w-full pl-10 pr-10 py-2.5 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500 transition-shadow">
+          <button type="button" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-eye text-sm"></i></button>
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <label class="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500">
+          <span class="text-sm text-gray-600">保持登录</span>
+        </label>
+      </div>
+      <button type="submit" class="w-full py-2.5 bg-primary-600 hover:bg-primary-700 text-white rounded-lg text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+        登录
+      </button>
+    </form>
+
+    <!-- MFA Prompt (Hidden by default, shown after password verification) -->
+    <div class="mt-6 p-4 rounded-xl bg-gray-50 border border-gray-200 hidden" id="mfaSection">
+      <div class="flex items-center gap-2 mb-3">
+        <i class="fa-solid fa-shield-halved text-primary-500"></i>
+        <span class="text-sm font-medium text-gray-700">多因素认证</span>
+      </div>
+      <p class="text-xs text-gray-500 mb-3">请输入你的认证器应用中的 6 位动态码</p>
+      <div class="flex gap-2">
+        <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500" pattern="[0-9]">
+        <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500" pattern="[0-9]">
+        <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500" pattern="[0-9]">
+        <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500" pattern="[0-9]">
+        <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500" pattern="[0-9]">
+        <input type="text" maxlength="1" class="w-10 h-12 text-center text-lg font-bold border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-200 focus:border-primary-500" pattern="[0-9]">
+      </div>
+      <div class="mt-2 text-xs text-gray-400">
+        <a href="#" class="text-primary-600 hover:underline">使用恢复码</a>
+      </div>
+    </div>
+
+    <!-- Error State (Hidden by default) -->
+    <div class="mt-4 p-3 rounded-lg bg-red-50 border border-red-200 hidden" id="errorMsg">
+      <div class="flex items-start gap-2">
+        <i class="fa-solid fa-circle-exclamation text-red-500 mt-0.5 text-sm"></i>
+        <div>
+          <div class="text-sm font-medium text-red-800">登录失败</div>
+          <div class="text-xs text-red-600">邮箱或密码错误，还剩 3 次尝试机会</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lockout State (Hidden by default) -->
+    <div class="mt-4 p-3 rounded-lg bg-amber-50 border border-amber-200 hidden" id="lockoutMsg">
+      <div class="flex items-start gap-2">
+        <i class="fa-solid fa-lock text-amber-500 mt-0.5 text-sm"></i>
+        <div>
+          <div class="text-sm font-medium text-amber-800">账号已锁定</div>
+          <div class="text-xs text-amber-600">连续 5 次登录失败，请在 15 分钟后重试或联系管理员</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Invite Note -->
+    <div class="mt-6 p-3 rounded-lg bg-gray-50 border border-gray-100 text-center">
+      <p class="text-xs text-gray-500">没有账号？请联系你的项目管理员获取邀请链接</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

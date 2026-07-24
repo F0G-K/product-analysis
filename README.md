@@ -52,10 +52,15 @@ cd docs/2_原型图
 open index.html   # 或直接浏览器打开
 ```
 
-### 后端（规划中）
+### 后端
 
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-uvicorn backend.main:app --reload
+python -m backend
 ```
+
+启动后可访问：
+
+- 健康检查：<http://localhost:8000/health>
+- Swagger 接口文档：<http://localhost:8000/docs>

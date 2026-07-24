@@ -63,14 +63,21 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
-    # 性能调优 (参考 PRD 9.1: 列表/详情 ≤2s)
+    # 性能调优 (开发环境裁剪)
     command: |
-      -c shared_buffers=256MB
-      -c effective_cache_size=1GB
-      -c maintenance_work_mem=64MB
-      -c wal_buffers=16MB
-      -c random_page_cost=1.1
-      -c max_connections=200
+      -c shared_buffers=128MB
+      -c effective_cache_size=384MB
+      -c maintenance_work_mem=32MB
+      -c wal_buffers=8MB
+      -c random_page_cost=1.2
+      -c max_connections=50
+    # 内存限制 (dev: 512MB 上限)
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+        reservations:
+          memory: 256m
 
   # ----------------------------------------------------------
   # Redis 7.2 — 缓存 / 会话 / Celery Broker / 限流
@@ -84,10 +91,17 @@ services:
     command: >
       redis-server
       --requirepass kkkcm520
-      --maxmemory 512mb
+      --maxmemory 128mb
       --maxmemory-policy allkeys-lru
       --appendonly yes
       --tcp-keepalive 300
+    # 内存限制 (dev: 256MB 上限)
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+        reservations:
+          memory: 128m
     ports:
       - "6379:6379"
     volumes:
@@ -118,6 +132,13 @@ services:
       # 租户隔离 (概要设计 6.4): 检索时通过 metadata 过滤
       CHROMA_SERVER_AUTHN_CREDENTIALS: ""       # 开发模式无需认证
       CHROMA_SERVER_AUTHN_PROVIDER: ""           # 开发模式无需认证
+    # 内存限制 (dev: 512MB 上限)
+    deploy:
+      resources:
+        limits:
+          memory: 512m
+        reservations:
+          memory: 256m
     ports:
       - "8000:8000"
     volumes:
@@ -137,13 +158,20 @@ services:
   # PRD 6.3.6: 基线快照不可变; 概要设计 5.3: 快照压缩存储
   # ----------------------------------------------------------
   minio:
-    image: minio/minio:RELEASE.2025-07-18T21-56-12Z
+    image: minio/minio:latest
     container_name: pa-minio
     restart: unless-stopped
     environment:
       MINIO_ROOT_USER: root
       MINIO_ROOT_PASSWORD: kkkcm520
       TZ: Asia/Shanghai
+    # 内存限制 (dev: 256MB 上限)
+    deploy:
+      resources:
+        limits:
+          memory: 256m
+        reservations:
+          memory: 128m
     ports:
       - "9000:9000"   # S3 API
       - "9001:9001"   # Web Console
@@ -181,6 +209,13 @@ services:
       echo 'MinIO buckets ready.';
       exit 0;
       "
+    # 内存限制 (一次性任务, 用完即释放)
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+        reservations:
+          memory: 64m
     networks:
       - pa-network
 
@@ -204,6 +239,13 @@ services:
       - ./nginx/ssl:/etc/nginx/ssl:ro
       # 前端静态资源 (原型阶段: docs/2_原型图)
       - ../../2_原型图:/usr/share/nginx/html/prototype:ro
+    # 内存限制 (dev: 128MB 上限)
+    deploy:
+      resources:
+        limits:
+          memory: 128m
+        reservations:
+          memory: 64m
     networks:
       - pa-network
     depends_on:

@@ -1,0 +1,578 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1680" width="1440" height="1680" style="font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;">
+  <defs>
+    <!-- Layer background gradients -->
+    <linearGradient id="grad-access" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2563EB;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="grad-app" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="grad-ai" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D97706;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="grad-data" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#DC2626;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#EF4444;stop-opacity:0.08"/>
+    </linearGradient>
+    <linearGradient id="grad-infra" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#8B5CF6;stop-opacity:0.08"/>
+    </linearGradient>
+
+    <!-- Module shadows -->
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="112%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+    <filter id="shadow-sm" x="-2%" y="-2%" width="104%" height="112%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/>
+    </filter>
+
+    <!-- Arrow markers -->
+    <marker id="arrow-blue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#059669"/>
+    </marker>
+    <marker id="arrow-amber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#D97706"/>
+    </marker>
+    <marker id="arrow-gray" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 L2,4 Z" fill="#6B7280"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1440" height="1680" fill="#F8FAFC" rx="0"/>
+
+  <!-- ============================================================ -->
+  <!-- TITLE -->
+  <!-- ============================================================ -->
+  <text x="720" y="42" text-anchor="middle" font-size="28" font-weight="700" fill="#1E293B" letter-spacing="2">产品管理智能助手平台 — 项目模块关系架构图</text>
+  <text x="720" y="68" text-anchor="middle" font-size="14" fill="#64748B">基于 PRD V1.2 + 概要设计总纲 | 2026-07-24</text>
+
+  <!-- ============================================================ -->
+  <!-- USERS (top center-right) -->
+  <!-- ============================================================ -->
+  <g transform="translate(60, 90)">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#1E293B">用户角色</text>
+    <line x1="0" y1="8" x2="50" y2="8" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <rect x="0" y="18" width="110" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="55" y="39" text-anchor="middle" font-size="12" fill="#3730A3">产品负责人</text>
+
+    <rect x="118" y="18" width="90" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="163" y="39" text-anchor="middle" font-size="12" fill="#3730A3">产品经理</text>
+
+    <rect x="216" y="18" width="90" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="261" y="39" text-anchor="middle" font-size="12" fill="#3730A3">研发负责人</text>
+
+    <rect x="314" y="18" width="90" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="359" y="39" text-anchor="middle" font-size="12" fill="#3730A3">测试负责人</text>
+
+    <rect x="412" y="18" width="90" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="457" y="39" text-anchor="middle" font-size="12" fill="#3730A3">数据人员</text>
+
+    <rect x="510" y="18" width="90" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="555" y="39" text-anchor="middle" font-size="12" fill="#3730A3">运维/SRE</text>
+
+    <rect x="608" y="18" width="100" height="32" rx="16" fill="#FEE2E2" stroke="#FCA5A5" stroke-width="1"/>
+    <text x="658" y="39" text-anchor="middle" font-size="12" fill="#991B1B">项目管理员</text>
+
+    <rect x="716" y="18" width="80" height="32" rx="16" fill="#E0E7FF" stroke="#A5B4FC" stroke-width="1"/>
+    <text x="756" y="39" text-anchor="middle" font-size="12" fill="#3730A3">管理者</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 1: ACCESS LAYER -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 155)">
+    <!-- Layer background -->
+    <rect x="0" y="0" width="1360" height="80" rx="8" fill="url(#grad-access)" stroke="#3B82F6" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <!-- Layer label -->
+    <rect x="0" y="0" width="120" height="80" rx="8" fill="#2563EB" opacity="0.9"/>
+    <rect x="112" y="0" width="8" height="80" fill="#2563EB" opacity="0.9"/>
+    <text x="60" y="34" text-anchor="middle" font-size="15" font-weight="700" fill="#FFF">接入层</text>
+    <text x="60" y="54" text-anchor="middle" font-size="11" fill="#DBEAFE">Access Layer</text>
+
+    <!-- Modules -->
+    <rect x="145" y="16" width="260" height="48" rx="6" fill="#FFF" stroke="#BFDBFE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="275" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#1E40AF">Web 前端</text>
+    <text x="275" y="54" text-anchor="middle" font-size="11" fill="#64748B">HTML5 + Tailwind CSS + ECharts</text>
+
+    <rect x="420" y="16" width="220" height="48" rx="6" fill="#FFF" stroke="#BFDBFE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="530" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#1E40AF">SSO / OIDC 认证适配</text>
+    <text x="530" y="54" text-anchor="middle" font-size="11" fill="#64748B">SAML 2.0 / OIDC / LDAP</text>
+
+    <rect x="655" y="16" width="260" height="48" rx="6" fill="#FFF" stroke="#BFDBFE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="785" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#1E40AF">API 网关 (Nginx)</text>
+    <text x="785" y="54" text-anchor="middle" font-size="11" fill="#64748B">反向代理 + SSL 终止 + 限流</text>
+
+    <rect x="930" y="16" width="200" height="48" rx="6" fill="#FFF" stroke="#BFDBFE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="1030" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#1E40AF">WebSocket 推送</text>
+    <text x="1030" y="54" text-anchor="middle" font-size="11" fill="#64748B">任务状态实时通知</text>
+
+    <!-- Down arrows to App Layer -->
+    <line x1="275" y1="68" x2="275" y2="100" stroke="#2563EB" stroke-width="1.5" marker-end="url(#arrow-blue)" stroke-dasharray="4,2"/>
+    <line x1="680" y1="68" x2="680" y2="100" stroke="#2563EB" stroke-width="1.5" marker-end="url(#arrow-blue)" stroke-dasharray="4,2"/>
+    <line x1="1030" y1="68" x2="1030" y2="100" stroke="#2563EB" stroke-width="1.5" marker-end="url(#arrow-blue)" stroke-dasharray="4,2"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 2: APPLICATION SERVICE LAYER -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 340)">
+    <rect x="0" y="0" width="1360" height="105" rx="8" fill="url(#grad-app)" stroke="#10B981" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <rect x="0" y="0" width="120" height="105" rx="8" fill="#059669" opacity="0.9"/>
+    <rect x="112" y="0" width="8" height="105" fill="#059669" opacity="0.9"/>
+    <text x="60" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#FFF">应用服务层</text>
+    <text x="60" y="60" text-anchor="middle" font-size="11" fill="#D1FAE5">Application</text>
+    <text x="60" y="78" text-anchor="middle" font-size="10" fill="#A7F3D0">FastAPI 0.111+</text>
+
+    <!-- Row 1: Core assistant services -->
+    <rect x="145" y="12" width="170" height="40" rx="6" fill="#FFF" stroke="#A7F3D0" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="230" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">工作台服务</text>
+    <text x="230" y="44" text-anchor="middle" font-size="10" fill="#64748B">待办 / 统计 / 风险概览</text>
+
+    <rect x="328" y="12" width="190" height="40" rx="6" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="423" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">需求价值评估助手服务</text>
+    <text x="423" y="44" text-anchor="middle" font-size="10" fill="#64748B">五维评分 + 优先级建议</text>
+
+    <rect x="531" y="12" width="195" height="40" rx="6" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="628" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">交付物一致性检查助手服务</text>
+    <text x="628" y="44" text-anchor="middle" font-size="10" fill="#64748B">跨文档语义比对 + 问题分级</text>
+
+    <rect x="739" y="12" width="190" height="40" rx="6" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="834" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">上线版本问题归因助手服务</text>
+    <text x="834" y="44" text-anchor="middle" font-size="10" fill="#64748B">时间线聚合 + 五类归因</text>
+
+    <!-- Row 2: Supporting services -->
+    <rect x="942" y="12" width="150" height="40" rx="6" fill="#FFF" stroke="#A7F3D0" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="1017" y="30" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">认证服务</text>
+    <text x="1017" y="44" text-anchor="middle" font-size="10" fill="#64748B">登录 / MFA / 会话</text>
+
+    <rect x="145" y="58" width="200" height="40" rx="6" fill="#FFF" stroke="#A7F3D0" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="245" y="76" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">项目管理与数据源服务</text>
+    <text x="245" y="90" text-anchor="middle" font-size="10" fill="#64748B">项目 / 成员 / 连接器</text>
+
+    <rect x="358" y="58" width="170" height="40" rx="6" fill="#FFF" stroke="#A7F3D0" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="443" y="76" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">报表服务</text>
+    <text x="443" y="90" text-anchor="middle" font-size="10" fill="#64748B">需求 / 质量 / 归因趋势</text>
+
+    <rect x="541" y="58" width="260" height="40" rx="6" fill="#FFF" stroke="#A7F3D0" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="671" y="76" text-anchor="middle" font-size="12" font-weight="600" fill="#065F46">公共能力</text>
+    <text x="671" y="90" text-anchor="middle" font-size="10" fill="#64748B">通知发送 / 搜索 / Markdown+Table导出</text>
+
+    <!-- Down arrows to AI Layer -->
+    <line x1="423" y1="105" x2="423" y2="145" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <line x1="628" y1="105" x2="628" y2="145" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <line x1="834" y1="105" x2="834" y2="145" stroke="#059669" stroke-width="2" marker-end="url(#arrow-green)"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 3: AI ANALYSIS LAYER (LangGraph + RAG) -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 530)">
+    <rect x="0" y="0" width="1360" height="250" rx="8" fill="url(#grad-ai)" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <rect x="0" y="0" width="120" height="250" rx="8" fill="#D97706" opacity="0.9"/>
+    <rect x="112" y="0" width="8" height="250" fill="#D97706" opacity="0.9"/>
+    <text x="60" y="110" text-anchor="middle" font-size="15" font-weight="700" fill="#FFF">AI 分析层</text>
+    <text x="60" y="132" text-anchor="middle" font-size="11" fill="#FEF3C7">AI Analysis</text>
+    <text x="60" y="150" text-anchor="middle" font-size="10" fill="#FDE68A">LangGraph</text>
+
+    <!-- LEFT: LangGraph Workflow Engine -->
+    <rect x="145" y="10" width="480" height="230" rx="6" fill="#FFF" stroke="#FCD34D" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="385" y="32" text-anchor="middle" font-size="14" font-weight="700" fill="#92400E">LangGraph 工作流引擎 (Workflow Engine)</text>
+    <line x1="160" y1="42" x2="610" y2="42" stroke="#FDE68A" stroke-width="1"/>
+
+    <!-- Three workflows -->
+    <rect x="155" y="52" width="148" height="110" rx="5" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1"/>
+    <rect x="155" y="52" width="148" height="22" rx="5" fill="#FEF3C7"/>
+    <text x="229" y="67" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">价值评估工作流</text>
+    <text x="229" y="85" text-anchor="middle" font-size="10" fill="#78716C">AssessmentWorkflow</text>
+    <line x1="163" y1="93" x2="295" y2="93" stroke="#FDE68A" stroke-width="0.5"/>
+    <text x="229" y="107" text-anchor="middle" font-size="10" fill="#64748B">输入校验 → RAG检索</text>
+    <text x="229" y="121" text-anchor="middle" font-size="10" fill="#64748B">→ Map五维并行评分</text>
+    <text x="229" y="135" text-anchor="middle" font-size="10" fill="#64748B">→ Reduce → 人工确认</text>
+    <text x="229" y="149" text-anchor="middle" font-size="10" fill="#64748B">→ 结果持久化</text>
+
+    <rect x="311" y="52" width="148" height="110" rx="5" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1"/>
+    <rect x="311" y="52" width="148" height="22" rx="5" fill="#FEF3C7"/>
+    <text x="385" y="67" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">一致性检查工作流</text>
+    <text x="385" y="85" text-anchor="middle" font-size="10" fill="#78716C">CheckWorkflow</text>
+    <line x1="319" y1="93" x2="451" y2="93" stroke="#FDE68A" stroke-width="0.5"/>
+    <text x="385" y="107" text-anchor="middle" font-size="10" fill="#64748B">基线创建 → Map五维</text>
+    <text x="385" y="121" text-anchor="middle" font-size="10" fill="#64748B">并行检索+比对</text>
+    <text x="385" y="135" text-anchor="middle" font-size="10" fill="#64748B">→ Reduce合并冲突</text>
+    <text x="385" y="149" text-anchor="middle" font-size="10" fill="#64748B">→ 问题处置子流程</text>
+
+    <rect x="467" y="52" width="148" height="110" rx="5" fill="#FFFBEB" stroke="#FCD34D" stroke-width="1"/>
+    <rect x="467" y="52" width="148" height="22" rx="5" fill="#FEF3C7"/>
+    <text x="541" y="67" text-anchor="middle" font-size="11" font-weight="700" fill="#92400E">问题归因工作流</text>
+    <text x="541" y="85" text-anchor="middle" font-size="10" fill="#78716C">AttributionWorkflow</text>
+    <line x1="475" y1="93" x2="607" y2="93" stroke="#FDE68A" stroke-width="0.5"/>
+    <text x="541" y="107" text-anchor="middle" font-size="10" fill="#64748B">自动拉取关联事件</text>
+    <text x="541" y="121" text-anchor="middle" font-size="10" fill="#64748B">→ Map按事件类别检索</text>
+    <text x="541" y="135" text-anchor="middle" font-size="10" fill="#64748B">→ LLM时间线聚合</text>
+    <text x="541" y="149" text-anchor="middle" font-size="10" fill="#64748B">→ 归因推理 → 人工确认</text>
+
+    <!-- Shared nodes row -->
+    <text x="385" y="178" text-anchor="middle" font-size="11" font-weight="600" fill="#92400E">共享状态机节点</text>
+    <rect x="155" y="186" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="196" y="201" text-anchor="middle" font-size="10" fill="#78716C">validate_input</text>
+    <rect x="242" y="186" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="283" y="201" text-anchor="middle" font-size="10" fill="#78716C">lock_snapshot</text>
+    <rect x="329" y="186" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="370" y="201" text-anchor="middle" font-size="10" fill="#78716C">retrieve_docs</text>
+    <rect x="416" y="186" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="457" y="201" text-anchor="middle" font-size="10" fill="#78716C">llm_analyze</text>
+    <rect x="503" y="186" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="544" y="201" text-anchor="middle" font-size="10" fill="#78716C">human_review</text>
+
+    <rect x="155" y="212" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="196" y="227" text-anchor="middle" font-size="10" fill="#78716C">evidence_link</text>
+    <rect x="242" y="212" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="283" y="227" text-anchor="middle" font-size="10" fill="#78716C">calc_confidence</text>
+    <rect x="329" y="212" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="370" y="227" text-anchor="middle" font-size="10" fill="#78716C">result_finalize</text>
+    <rect x="416" y="212" width="82" height="22" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+    <text x="457" y="227" text-anchor="middle" font-size="10" fill="#78716C">error_handler</text>
+
+    <!-- RIGHT SIDE: RAG Pipeline + Rule Engine + Evidence + LLM Gateway -->
+    <!-- RAG Pipeline -->
+    <rect x="640" y="10" width="360" height="175" rx="6" fill="#FFF" stroke="#FCD34D" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="820" y="32" text-anchor="middle" font-size="13" font-weight="700" fill="#92400E">共享 RAG 管道 (Shared Pipeline)</text>
+    <line x1="655" y1="42" x2="985" y2="42" stroke="#FDE68A" stroke-width="1"/>
+
+    <!-- Indexing sub-pipeline -->
+    <rect x="652" y="50" width="336" height="52" rx="4" fill="#FFF7ED" stroke="#FDBA74" stroke-width="0.8"/>
+    <text x="820" y="66" text-anchor="middle" font-size="11" font-weight="600" fill="#9A3412">离线索引管道 (Indexing Pipeline)</text>
+    <rect x="658" y="72" width="68" height="24" rx="3" fill="#FFF" stroke="#FED7AA" stroke-width="0.8"/>
+    <text x="692" y="88" text-anchor="middle" font-size="10" fill="#78716C">Document Loader</text>
+    <text x="728" y="88" font-size="10" fill="#D6D3D1">→</text>
+    <rect x="738" y="72" width="68" height="24" rx="3" fill="#FFF" stroke="#FED7AA" stroke-width="0.8"/>
+    <text x="772" y="88" text-anchor="middle" font-size="10" fill="#78716C">Text Splitter</text>
+    <text x="808" y="88" font-size="10" fill="#D6D3D1">→</text>
+    <rect x="818" y="72" width="68" height="24" rx="3" fill="#FFF" stroke="#FED7AA" stroke-width="0.8"/>
+    <text x="852" y="88" text-anchor="middle" font-size="10" fill="#78716C">Embedding</text>
+    <text x="888" y="88" font-size="10" fill="#D6D3D1">→</text>
+    <rect x="898" y="72" width="84" height="24" rx="3" fill="#FED7AA" stroke="#F59E0B" stroke-width="0.8"/>
+    <text x="940" y="88" text-anchor="middle" font-size="10" fill="#92400E">Vector Store</text>
+
+    <!-- Online sub-pipeline -->
+    <rect x="652" y="108" width="336" height="52" rx="4" fill="#F0FDF4" stroke="#86EFAC" stroke-width="0.8"/>
+    <text x="820" y="124" text-anchor="middle" font-size="11" font-weight="600" fill="#166534">在线检索管道 (Retrieval Pipeline)</text>
+    <rect x="658" y="130" width="68" height="24" rx="3" fill="#FFF" stroke="#BBF7D0" stroke-width="0.8"/>
+    <text x="692" y="146" text-anchor="middle" font-size="10" fill="#78716C">Query Builder</text>
+    <text x="728" y="146" font-size="10" fill="#D6D3D1">→</text>
+    <rect x="738" y="130" width="68" height="24" rx="3" fill="#FFF" stroke="#BBF7D0" stroke-width="0.8"/>
+    <text x="772" y="146" text-anchor="middle" font-size="10" fill="#78716C">Hybrid Search</text>
+    <text x="808" y="146" font-size="10" fill="#D6D3D1">→</text>
+    <rect x="818" y="130" width="68" height="24" rx="3" fill="#FFF" stroke="#BBF7D0" stroke-width="0.8"/>
+    <text x="852" y="146" text-anchor="middle" font-size="10" fill="#78716C">Re-rank+Filter</text>
+    <text x="888" y="146" font-size="10" fill="#D6D3D1">→</text>
+    <rect x="898" y="130" width="84" height="24" rx="3" fill="#BBF7D0" stroke="#10B981" stroke-width="0.8"/>
+    <text x="940" y="146" text-anchor="middle" font-size="10" fill="#166534">Context Assembly</text>
+
+    <!-- Arrow down to generation -->
+    <line x1="820" y1="162" x2="820" y2="180" stroke="#D97706" stroke-width="1.5" marker-end="url(#arrow-amber)"/>
+
+    <!-- Generation pipeline -->
+    <rect x="652" y="180" width="336" height="28" rx="4" fill="#FEF2F2" stroke="#FCA5A5" stroke-width="0.8"/>
+    <text x="820" y="198" text-anchor="middle" font-size="10" fill="#991B1B">Prompt Template + Context → LLM Inference (Claude API, temp≤0.3) → 结构化输出 (JSON)</text>
+
+    <!-- Bottom-right: Rule Engine, Evidence Linker, LLM Gateway -->
+    <rect x="640" y="195" width="175" height="45" rx="5" fill="#FFF" stroke="#E9D5FF" stroke-width="1.2" filter="url(#shadow-sm)"/>
+    <text x="727" y="214" text-anchor="middle" font-size="12" font-weight="600" fill="#6B21A8">规则引擎 Rule Engine</text>
+    <text x="727" y="230" text-anchor="middle" font-size="10" fill="#78716C">Python DSL · 确定性判定优先</text>
+
+    <rect x="825" y="195" width="175" height="45" rx="5" fill="#FFF" stroke="#E9D5FF" stroke-width="1.2" filter="url(#shadow-sm)"/>
+    <text x="912" y="214" text-anchor="middle" font-size="12" font-weight="600" fill="#6B21A8">证据链组装器 Evidence Linker</text>
+    <text x="912" y="230" text-anchor="middle" font-size="10" fill="#78716C">事实/推断/缺失 三标签体系</text>
+
+    <rect x="1010" y="10" width="175" height="80" rx="5" fill="#FFF" stroke="#A5F3FC" stroke-width="1.2" filter="url(#shadow-sm)"/>
+    <text x="1097" y="32" text-anchor="middle" font-size="12" font-weight="600" fill="#155E75">LLM 推理网关</text>
+    <text x="1097" y="48" text-anchor="middle" font-size="10" fill="#78716C">Model Router</text>
+    <line x1="1020" y1="56" x2="1175" y2="56" stroke="#A5F3FC" stroke-width="0.5"/>
+    <text x="1097" y="70" text-anchor="middle" font-size="10" fill="#64748B">Claude API (默认)</text>
+    <text x="1097" y="84" text-anchor="middle" font-size="10" fill="#64748B">可替换兼容接口</text>
+
+    <rect x="1010" y="100" width="175" height="80" rx="5" fill="#FFF" stroke="#FED7AA" stroke-width="1.2" filter="url(#shadow-sm)"/>
+    <text x="1097" y="120" text-anchor="middle" font-size="11" font-weight="600" fill="#9A3412">大模型治理</text>
+    <line x1="1020" y1="128" x2="1175" y2="128" stroke="#FED7AA" stroke-width="0.5"/>
+    <text x="1097" y="144" text-anchor="middle" font-size="10" fill="#64748B">模型版本·Prompt版本</text>
+    <text x="1097" y="158" text-anchor="middle" font-size="10" fill="#64748B">温度参数·Token预算</text>
+    <text x="1097" y="172" text-anchor="middle" font-size="10" fill="#64748B">一致性告警·成本统计</text>
+
+    <!-- Down arrow -->
+    <line x1="680" y1="250" x2="680" y2="288" stroke="#D97706" stroke-width="2" marker-end="url(#arrow-amber)"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 4: DATA & INTEGRATION LAYER -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 830)">
+    <rect x="0" y="0" width="1360" height="85" rx="8" fill="url(#grad-data)" stroke="#EF4444" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <rect x="0" y="0" width="120" height="85" rx="8" fill="#DC2626" opacity="0.9"/>
+    <rect x="112" y="0" width="8" height="85" fill="#DC2626" opacity="0.9"/>
+    <text x="60" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#FFF">数据与集成层</text>
+    <text x="60" y="52" text-anchor="middle" font-size="11" fill="#FEE2E2">Data &amp; Integration</text>
+    <text x="60" y="68" text-anchor="middle" font-size="10" fill="#FECACA">Celery + Redis</text>
+
+    <rect x="145" y="16" width="230" height="52" rx="6" fill="#FFF" stroke="#FECACA" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="260" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#991B1B">外部系统连接器 Connectors</text>
+    <text x="260" y="56" text-anchor="middle" font-size="10" fill="#64748B">PRD仓库 · 接口平台 · 埋点 · 代码 · 监控 · 工单 · 日志</text>
+
+    <rect x="390" y="16" width="220" height="52" rx="6" fill="#FFF" stroke="#FECACA" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="500" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#991B1B">同步调度 Sync Scheduler</text>
+    <text x="500" y="56" text-anchor="middle" font-size="10" fill="#64748B">Cron定时触发 · 增量变更检测</text>
+
+    <rect x="625" y="16" width="220" height="52" rx="6" fill="#FFF" stroke="#FECACA" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="735" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#991B1B">快照管理 Snapshot Manager</text>
+    <text x="735" y="56" text-anchor="middle" font-size="10" fill="#64748B">不可变快照 · 版本追溯 · MinIO/S3</text>
+
+    <rect x="860" y="16" width="220" height="52" rx="6" fill="#FFF" stroke="#FECACA" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="970" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#991B1B">脱敏处理器 Sensitive Masker</text>
+    <text x="970" y="56" text-anchor="middle" font-size="10" fill="#64748B">手机号 · 邮箱 · 身份证 · 密钥</text>
+
+    <!-- Down arrow -->
+    <line x1="680" y1="85" x2="680" y2="120" stroke="#DC2626" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LAYER 5: INFRASTRUCTURE LAYER -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 960)">
+    <rect x="0" y="0" width="1360" height="85" rx="8" fill="url(#grad-infra)" stroke="#8B5CF6" stroke-width="1.5" stroke-dasharray="6,3"/>
+    <rect x="0" y="0" width="120" height="85" rx="8" fill="#7C3AED" opacity="0.9"/>
+    <rect x="112" y="0" width="8" height="85" fill="#7C3AED" opacity="0.9"/>
+    <text x="60" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#FFF">基础设施层</text>
+    <text x="60" y="52" text-anchor="middle" font-size="11" fill="#EDE9FE">Infrastructure</text>
+    <text x="60" y="68" text-anchor="middle" font-size="10" fill="#DDD6FE">Storage &amp; Cache</text>
+
+    <rect x="145" y="16" width="200" height="52" rx="6" fill="#FFF" stroke="#DDD6FE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="245" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">PostgreSQL 16</text>
+    <text x="245" y="56" text-anchor="middle" font-size="10" fill="#64748B">业务数据 · 审计日志 · RLS</text>
+
+    <rect x="358" y="16" width="200" height="52" rx="6" fill="#FFF" stroke="#DDD6FE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="458" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">Redis 7</text>
+    <text x="458" y="56" text-anchor="middle" font-size="10" fill="#64748B">会话 · 缓存 · 队列 · 限流</text>
+
+    <rect x="571" y="16" width="200" height="52" rx="6" fill="#FFF" stroke="#DDD6FE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="671" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">ChromaDB / Milvus</text>
+    <text x="671" y="56" text-anchor="middle" font-size="10" fill="#64748B">向量嵌入存储 · 语义检索</text>
+
+    <rect x="784" y="16" width="200" height="52" rx="6" fill="#FFF" stroke="#DDD6FE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="884" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">MinIO / S3</text>
+    <text x="884" y="56" text-anchor="middle" font-size="10" fill="#64748B">文档原文 · 快照 · 导出文件</text>
+
+    <rect x="997" y="16" width="200" height="52" rx="6" fill="#FFF" stroke="#DDD6FE" stroke-width="1.5" filter="url(#shadow-sm)"/>
+    <text x="1097" y="36" text-anchor="middle" font-size="13" font-weight="600" fill="#5B21B6">Celery Worker</text>
+    <text x="1097" y="56" text-anchor="middle" font-size="10" fill="#64748B">异步分析任务调度</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- EXTERNAL SYSTEMS LEFT SIDE -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 1060)">
+    <text x="0" y="0" font-size="14" font-weight="700" fill="#1E293B">外部数据源</text>
+    <line x1="0" y1="8" x2="80" y2="8" stroke="#94A3B8" stroke-width="1.5"/>
+
+    <rect x="0" y="20" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="37" text-anchor="middle" font-size="11" fill="#475569">PRD 仓库 (Word/MD)</text>
+
+    <rect x="0" y="52" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="69" text-anchor="middle" font-size="11" fill="#475569">接口平台 (OpenAPI)</text>
+
+    <rect x="0" y="84" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="101" text-anchor="middle" font-size="11" fill="#475569">埋点系统 (Excel/CSV)</text>
+
+    <rect x="0" y="116" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="133" text-anchor="middle" font-size="11" fill="#475569">代码仓库 (Git Diff)</text>
+
+    <rect x="0" y="148" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="165" text-anchor="middle" font-size="11" fill="#475569">监控系统 (指标/告警)</text>
+
+    <rect x="0" y="180" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="197" text-anchor="middle" font-size="11" fill="#475569">工单系统 (API接入)</text>
+
+    <rect x="0" y="212" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="229" text-anchor="middle" font-size="11" fill="#475569">日志平台 (JSON/文本)</text>
+
+    <rect x="0" y="244" width="150" height="26" rx="4" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="75" y="261" text-anchor="middle" font-size="11" fill="#475569">测试用例管理</text>
+
+    <!-- Arrow from external systems to Connectors -->
+    <path d="M152,33 L175,33 L175,870 L180,870" stroke="#6B7280" stroke-width="1.5" fill="none" marker-end="url(#arrow-gray)" stroke-dasharray="5,3"/>
+    <path d="M152,153 L175,153 L175,870 L180,870" stroke="#6B7280" stroke-width="1.5" fill="none" marker-end="url(#arrow-gray)" stroke-dasharray="5,3"/>
+    <text x="162" y="460" font-size="10" fill="#6B7280" transform="rotate(-90, 162, 460)">连接器拉取 / 定时同步</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- DATA FLOW SUMMARY (right side) -->
+  <!-- ============================================================ -->
+  <g transform="translate(210, 1060)">
+    <rect x="0" y="0" width="950" height="310" rx="8" fill="#FFF" stroke="#E2E8F0" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="475" y="24" text-anchor="middle" font-size="14" font-weight="700" fill="#1E293B">核心数据流 (Data Flow)</text>
+    <line x1="15" y1="34" x2="935" y2="34" stroke="#E2E8F0" stroke-width="1"/>
+
+    <!-- Flow steps -->
+    <g transform="translate(15, 50)">
+      <!-- Step 1 -->
+      <rect x="0" y="0" width="175" height="70" rx="6" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="1.2"/>
+      <text x="87" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#1E40AF">① 外部数据接入</text>
+      <text x="87" y="40" text-anchor="middle" font-size="10" fill="#64748B">连接器 / 文件上传</text>
+      <text x="87" y="56" text-anchor="middle" font-size="10" fill="#64748B">定时 / 手动同步</text>
+
+      <text x="182" y="38" font-size="14" fill="#94A3B8">→</text>
+
+      <!-- Step 2 -->
+      <rect x="198" y="0" width="175" height="70" rx="6" fill="#F0FDF4" stroke="#BBF7D0" stroke-width="1.2"/>
+      <text x="285" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#166534">② 文档处理 &amp; 索引</text>
+      <text x="285" y="40" text-anchor="middle" font-size="10" fill="#64748B">解析 → 分块 → 脱敏</text>
+      <text x="285" y="56" text-anchor="middle" font-size="10" fill="#64748B">→ 向量嵌入 → 索引</text>
+
+      <text x="380" y="38" font-size="14" fill="#94A3B8">→</text>
+
+      <!-- Step 3 -->
+      <rect x="396" y="0" width="175" height="70" rx="6" fill="#FFF7ED" stroke="#FED7AA" stroke-width="1.2"/>
+      <text x="483" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#9A3412">③ 任务驱动检索</text>
+      <text x="483" y="40" text-anchor="middle" font-size="10" fill="#64748B">用户创建分析任务</text>
+      <text x="483" y="56" text-anchor="middle" font-size="10" fill="#64748B">Hybrid Search + Re-rank</text>
+
+      <text x="578" y="38" font-size="14" fill="#94A3B8">→</text>
+
+      <!-- Step 4 -->
+      <rect x="594" y="0" width="175" height="70" rx="6" fill="#FFF1F2" stroke="#FECACA" stroke-width="1.2"/>
+      <text x="681" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#991B1B">④ AI 分析 &amp; 推理</text>
+      <text x="681" y="40" text-anchor="middle" font-size="10" fill="#64748B">规则引擎 + LLM</text>
+      <text x="681" y="56" text-anchor="middle" font-size="10" fill="#64748B">证据链组装 + 置信度</text>
+
+      <text x="776" y="38" font-size="14" fill="#94A3B8">→</text>
+
+      <!-- Step 5 -->
+      <rect x="792" y="0" width="143" height="70" rx="6" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="1.2"/>
+      <text x="863" y="22" text-anchor="middle" font-size="12" font-weight="600" fill="#5B21B6">⑤ 人工确认</text>
+      <text x="863" y="40" text-anchor="middle" font-size="10" fill="#64748B">评分/归因复核</text>
+      <text x="863" y="56" text-anchor="middle" font-size="10" fill="#64748B">问题处置 + 导出</text>
+    </g>
+
+    <!-- Lower section: Key Design Decisions -->
+    <g transform="translate(15, 140)">
+      <text x="0" y="0" font-size="12" font-weight="600" fill="#1E293B">任务通用状态流转</text>
+      <line x1="0" y1="8" x2="180" y2="8" stroke="#E2E8F0" stroke-width="1"/>
+
+      <rect x="0" y="16" width="72" height="26" rx="4" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.8"/>
+      <text x="36" y="33" text-anchor="middle" font-size="10" fill="#475569">草稿</text>
+      <text x="76" y="33" font-size="11" fill="#94A3B8">→</text>
+
+      <rect x="84" y="16" width="72" height="26" rx="4" fill="#DBEAFE" stroke="#93C5FD" stroke-width="0.8"/>
+      <text x="120" y="33" text-anchor="middle" font-size="10" fill="#1E40AF">待校验</text>
+      <text x="160" y="33" font-size="11" fill="#94A3B8">→</text>
+
+      <rect x="168" y="16" width="72" height="26" rx="4" fill="#FEF3C7" stroke="#FCD34D" stroke-width="0.8"/>
+      <text x="204" y="33" text-anchor="middle" font-size="10" fill="#92400E">分析中</text>
+      <text x="244" y="33" font-size="11" fill="#94A3B8">→</text>
+
+      <rect x="252" y="16" width="72" height="26" rx="4" fill="#FED7AA" stroke="#FDBA74" stroke-width="0.8"/>
+      <text x="288" y="33" text-anchor="middle" font-size="10" fill="#9A3412">待确认</text>
+      <text x="328" y="33" font-size="11" fill="#94A3B8">→</text>
+
+      <rect x="336" y="16" width="72" height="26" rx="4" fill="#BBF7D0" stroke="#86EFAC" stroke-width="0.8"/>
+      <text x="372" y="33" text-anchor="middle" font-size="10" fill="#166534">已完成</text>
+
+      <!-- Branch -->
+      <text x="84" y="64" font-size="10" fill="#94A3B8">↳ 失败 (保留过程状态,可重试)</text>
+      <text x="84" y="80" font-size="10" fill="#94A3B8">↳ 已取消 (保留记录,不计入指标)</text>
+    </g>
+
+    <!-- Key Design Principles -->
+    <g transform="translate(560, 140)">
+      <text x="0" y="0" font-size="12" font-weight="600" fill="#1E293B">关键设计原则</text>
+      <line x1="0" y1="8" x2="180" y2="8" stroke="#E2E8F0" stroke-width="1"/>
+
+      <rect x="0" y="16" width="170" height="22" rx="3" fill="#EFF6FF" stroke="#DBEAFE" stroke-width="0.6"/>
+      <text x="85" y="31" text-anchor="middle" font-size="10" fill="#3B82F6">RAG优先: 检索增强生成</text>
+
+      <rect x="0" y="42" width="170" height="22" rx="3" fill="#F0FDF4" stroke="#DCFCE7" stroke-width="0.6"/>
+      <text x="85" y="57" text-anchor="middle" font-size="10" fill="#10B981">规则优先: 确定性判定前置</text>
+
+      <rect x="0" y="68" width="170" height="22" rx="3" fill="#FFF7ED" stroke="#FFEDD5" stroke-width="0.6"/>
+      <text x="85" y="83" text-anchor="middle" font-size="10" fill="#F59E0B">快照不可变: 保证可复现性</text>
+
+      <rect x="0" y="94" width="170" height="22" rx="3" fill="#FFF1F2" stroke="#FFE4E6" stroke-width="0.6"/>
+      <text x="85" y="109" text-anchor="middle" font-size="10" fill="#EF4444">人工决策: 强制确认节点</text>
+
+      <rect x="180" y="16" width="195" height="22" rx="3" fill="#F5F3FF" stroke="#EDE9FE" stroke-width="0.6"/>
+      <text x="277" y="31" text-anchor="middle" font-size="10" fill="#8B5CF6">模型治理: 版本·Prompt·温度</text>
+
+      <rect x="180" y="42" width="195" height="22" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="0.6"/>
+      <text x="277" y="57" text-anchor="middle" font-size="10" fill="#64748B">租户隔离: RLS + 数据标记</text>
+
+      <rect x="180" y="68" width="195" height="22" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="0.6"/>
+      <text x="277" y="83" text-anchor="middle" font-size="10" fill="#64748B">证据可追溯: 引用+事实/推断区分</text>
+
+      <rect x="180" y="94" width="195" height="22" rx="3" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="0.6"/>
+      <text x="277" y="109" text-anchor="middle" font-size="10" fill="#64748B">异步可恢复: 失败节点重试</text>
+    </g>
+
+    <!-- Permissions -->
+    <g transform="translate(15, 210)">
+      <text x="0" y="0" font-size="12" font-weight="600" fill="#1E293B">权限模型</text>
+      <line x1="0" y1="8" x2="80" y2="8" stroke="#E2E8F0" stroke-width="1"/>
+      <text x="0" y="24" font-size="10" fill="#64748B">租户 → 项目 → 对象 三级控制</text>
+      <text x="0" y="38" font-size="10" fill="#64748B">角色: 租户管理员 / 项目管理员 / 项目成员 / 访客</text>
+      <text x="0" y="52" font-size="10" fill="#64748B">审计: 登录·权限变更·任务创建·结论修改·确认·导出 全量记录</text>
+    </g>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- LEGEND -->
+  <!-- ============================================================ -->
+  <g transform="translate(40, 1400)">
+    <rect x="0" y="0" width="1360" height="110" rx="8" fill="#FFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="680" y="24" text-anchor="middle" font-size="13" font-weight="700" fill="#1E293B">图例</text>
+    <line x1="15" y1="34" x2="1345" y2="34" stroke="#E2E8F0" stroke-width="1"/>
+
+    <rect x="20" y="46" width="30" height="14" rx="3" fill="#2563EB" opacity="0.8"/>
+    <text x="58" y="57" font-size="11" fill="#475569">接入层</text>
+
+    <rect x="125" y="46" width="30" height="14" rx="3" fill="#059669" opacity="0.8"/>
+    <text x="163" y="57" font-size="11" fill="#475569">应用服务层</text>
+
+    <rect x="260" y="46" width="30" height="14" rx="3" fill="#D97706" opacity="0.8"/>
+    <text x="298" y="57" font-size="11" fill="#475569">AI 分析层</text>
+
+    <rect x="395" y="46" width="30" height="14" rx="3" fill="#DC2626" opacity="0.8"/>
+    <text x="433" y="57" font-size="11" fill="#475569">数据与集成层</text>
+
+    <rect x="540" y="46" width="30" height="14" rx="3" fill="#7C3AED" opacity="0.8"/>
+    <text x="578" y="57" font-size="11" fill="#475569">基础设施层</text>
+
+    <rect x="685" y="46" width="30" height="14" rx="3" fill="#F1F5F9" stroke="#CBD5E1" stroke-width="0.6"/>
+    <text x="723" y="57" font-size="11" fill="#475569">外部系统</text>
+
+    <line x1="840" y1="53" x2="880" y2="53" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="4,2"/>
+    <text x="888" y="57" font-size="11" fill="#475569">数据/控制流</text>
+
+    <rect x="20" y="72" width="30" height="14" rx="3" fill="#D1FAE5" stroke="#6EE7B7" stroke-width="0.6"/>
+    <text x="58" y="83" font-size="11" fill="#475569">核心助手服务 (高亮)</text>
+
+    <rect x="200" y="72" width="30" height="14" rx="3" fill="#FFF" stroke="#BFDBFE" stroke-width="0.6"/>
+    <text x="238" y="83" font-size="11" fill="#475569">一般模块</text>
+
+    <rect x="335" y="72" width="30" height="14" rx="3" fill="#E2E8F0" stroke="#CBD5E1" stroke-width="0.6"/>
+    <text x="373" y="83" font-size="11" fill="#475569">状态节点</text>
+
+    <!-- Technology stack -->
+    <text x="680" y="100" text-anchor="middle" font-size="11" fill="#94A3B8">核心技术栈: FastAPI 0.111+ · LangGraph 0.2+ · LangChain 0.3+ · ChromaDB/Milvus · PostgreSQL 16 · Redis 7 · MinIO/S3 · Celery 5.3+ · Claude API</text>
+  </g>
+
+  <!-- ============================================================ -->
+  <!-- CORNER: Document reference -->
+  <!-- ============================================================ -->
+  <text x="1390" y="1528" text-anchor="end" font-size="10" fill="#CBD5E1">docs/3_概要设计/images/项目模块关系架构图.svg</text>
+</svg>

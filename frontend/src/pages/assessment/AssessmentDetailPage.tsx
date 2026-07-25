@@ -9,6 +9,8 @@ import { Tabs } from '@/components/ui/Tabs';
 import { TaskStatusBadge } from '@/components/task/TaskStatusBadge';
 import { PRIORITY_MAP } from '@/utils/constants';
 import { useState } from 'react';
+import { getTask } from '@/services/tasks';
+import { TaskDispatchButton } from '@/components/task/TaskDispatchButton';
 
 export function AssessmentDetailPage() {
   const { taskId } = useParams<{ taskId: string }>();
@@ -16,7 +18,14 @@ export function AssessmentDetailPage() {
 
   const { data, isLoading } = useQuery({
     queryKey: ['assessment', taskId],
-    queryFn: () => getAssessmentDetail(taskId!),
+    queryFn: async () => {
+      try {
+        return await getAssessmentDetail(taskId!);
+      } catch {
+        const response = await getTask(taskId!);
+        return { ...response, data: { ...response.data, requirement_id: '', model_id: '', dimensions: [] } };
+      }
+    },
     enabled: !!taskId,
   });
 
@@ -62,6 +71,7 @@ export function AssessmentDetailPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="secondary">导出报告</Button>
+          {task.status === 'draft' && <TaskDispatchButton taskId={task.id} />}
           {task.status === 'pending_review' && (
             <Button variant="primary">确认评估</Button>
           )}

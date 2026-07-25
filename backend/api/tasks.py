@@ -63,6 +63,24 @@ async def get_task(
 
 
 @router.post(
+    "/{task_id}/dispatch",
+    response_model=APIResponse[dict[str, str]],
+    status_code=status.HTTP_202_ACCEPTED,
+)
+async def dispatch_task(
+    task_id: UUID,
+    request: Request,
+    service: TaskServiceDep,
+    actor: TaskActorDep,
+) -> APIResponse[dict[str, str]]:
+    queue_id = await service.dispatch(task_id, actor)
+    return APIResponse(
+        data={"queue_id": queue_id},
+        request_id=_request_id(request),
+    )
+
+
+@router.post(
     "/{task_id}/cancel",
     response_model=APIResponse[None],
     status_code=status.HTTP_200_OK,

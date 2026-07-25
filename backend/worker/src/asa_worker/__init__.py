@@ -1,0 +1,1 @@
+"""ASA Celery Worker。"""

@@ -14,6 +14,7 @@ import { TaskStatusBadge } from '@/components/task/TaskStatusBadge';
 import { Select } from '@/components/ui/Select';
 import { formatDate } from '@/utils/format';
 import type { Task } from '@/types/task';
+import { CreateAnalysisDialog } from '@/components/create/CreateAnalysisDialog';
 
 const columns: TableColumn<Task>[] = [
   { key: 'title', title: '归因任务', dataIndex: 'title', render: (v) => (
@@ -22,7 +23,7 @@ const columns: TableColumn<Task>[] = [
   { key: 'status', title: '状态', align: 'center', render: (_, r) => (
     <TaskStatusBadge status={r.status} />
   )},
-  { key: 'creator', title: '创建人', dataIndex: 'created_by_name' },
+  { key: 'creator', title: '创建人', render: (_, r) => r.created_by.name ?? '我' },
   { key: 'time', title: '时间', render: (_, r) => (
     <span className="text-xs text-gray-400">{formatDate(r.created_at)}</span>
   )},
@@ -34,6 +35,7 @@ export function AttributionListPage() {
   const { page, pageSize, setPage } = usePagination();
   const [status, setStatus] = useState('');
   const [search, setSearch] = useState('');
+  const [createOpen, setCreateOpen] = useState(false);
   const debouncedSearch = useDebounce(search);
 
   const { data, isLoading } = useQuery({
@@ -58,7 +60,7 @@ export function AttributionListPage() {
           <h1 className="text-lg font-semibold text-gray-800">上线问题归因</h1>
           <p className="text-xs text-gray-400 mt-0.5">版本分析 · 时间线 · 归因推理</p>
         </div>
-        <Button variant="primary">+ 新建归因</Button>
+        <Button variant="primary" onClick={() => setCreateOpen(true)}>+ 新建归因</Button>
       </div>
 
       <FilterBar>
@@ -79,6 +81,11 @@ export function AttributionListPage() {
 
       <Table columns={columns} data={items} loading={isLoading} rowKey="id" onRowClick={(r) => navigate(`/attribution/${r.id}`)} />
       <PaginationUI current={page} total={total} pageSize={pageSize} onChange={setPage} />
+      <CreateAnalysisDialog
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        initialTaskType="attribution"
+      />
     </div>
   );
 }

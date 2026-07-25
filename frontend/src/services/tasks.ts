@@ -1,6 +1,6 @@
 import { get, getPaginated, post } from './request';
 import type { ApiResponse } from '@/types/api';
-import type { Task } from '@/types/task';
+import type { AnalysisTaskCreate, Task } from '@/types/task';
 import type { WorkspaceData, Snapshot } from '@/types/common';
 
 /** 获取任务列表 */
@@ -11,6 +11,19 @@ export async function listTasks(params?: Record<string, unknown>): Promise<ApiRe
 /** 获取任务详情 */
 export async function getTask(taskId: string): Promise<ApiResponse<Task>> {
   return get<Task>(`/tasks/${taskId}`);
+}
+
+/** 创建分析任务草稿 */
+export async function createAnalysisTask(
+  projectId: string,
+  data: AnalysisTaskCreate,
+): Promise<ApiResponse<Task>> {
+  return post<Task>(`/projects/${projectId}/analysis-tasks`, data);
+}
+
+/** 开始执行草稿任务 */
+export async function dispatchTask(taskId: string): Promise<ApiResponse<{ queue_id: string }>> {
+  return post<{ queue_id: string }>(`/tasks/${taskId}/dispatch`);
 }
 
 /** 取消任务 */

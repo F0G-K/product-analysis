@@ -34,6 +34,27 @@
 
 详见 [概要设计总纲](docs/3_概要设计/概要设计_总纲.md)。
 
+## 项目目录结构
+
+```text
+product-analysis/
+├── backend/                     # FastAPI 后端
+├── frontend/                    # React 前端
+│   ├── public/                  # 公共静态资源
+│   ├── src/
+│   ├── package.json
+│   └── vite.config.ts
+├── tests/                       # 后端自动化测试
+├── docs/                        # 项目文档
+├── deploy/                      # 部署相关资料
+├── README.md                    # 项目说明
+├── pyproject.toml               # Python 工具配置
+├── requirements.txt             # 后端运行依赖
+└── requirements-dev.txt         # 后端开发与测试依赖
+```
+
+> 目录结构中省略了 `.git`、`.venv`、`node_modules`、IDE 配置、缓存和构建产物。
+
 ## 文档导航
 
 | 文档 | 说明 |

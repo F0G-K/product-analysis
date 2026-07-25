@@ -31,6 +31,8 @@ class Settings(BaseSettings):
     llm_api_key: str | None = None
     llm_api_base_url: str = "https://api.anthropic.com"
     llm_default_model: str = "claude-opus-4-8"
+    llm_default_model_version: str = "2026-07-24"
+    llm_prompt_version: str = "v1"
     llm_default_temperature: float = Field(default=0.3, ge=0, le=0.3)
     llm_max_tokens: int = Field(default=4096, ge=1)
     llm_timeout_seconds: float = Field(default=120, gt=0)
@@ -39,4 +41,3 @@ class Settings(BaseSettings):
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
     return Settings()
-

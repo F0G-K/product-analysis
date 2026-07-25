@@ -3,8 +3,7 @@ import { z } from 'zod'
 // ===== 登录 =====
 
 export const loginSchema = z.object({
-  tenant_slug: z.string().min(1, '请输入租户标识'),
-  email: z.string().email('请输入有效邮箱'),
+  username: z.string().min(1, '请输入账号'),
   password: z.string().min(1, '请输入密码'),
   remember_me: z.boolean().optional(),
 })

@@ -8,6 +8,8 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { TaskStatusBadge } from '@/components/task/TaskStatusBadge';
 import { ISSUE_LEVEL_MAP } from '@/utils/constants';
 import type { CheckIssue, IssueLevel } from '@/types/consistency';
+import { getTask } from '@/services/tasks';
+import { TaskDispatchButton } from '@/components/task/TaskDispatchButton';
 
 const levelColors: Record<IssueLevel, 'red' | 'amber' | 'blue' | 'gray'> = {
   blocker: 'red',
@@ -21,14 +23,21 @@ export function ConsistencyDetailPage() {
 
   const { data: taskRes, isLoading } = useQuery({
     queryKey: ['check-task', taskId],
-    queryFn: () => getCheckTaskDetail(taskId!),
+    queryFn: async () => {
+      try {
+        return await getCheckTaskDetail(taskId!);
+      } catch {
+        const response = await getTask(taskId!);
+        return { ...response, data: { ...response.data, baseline_id: '', involved_deliverables: [] } };
+      }
+    },
     enabled: !!taskId,
   });
 
   const { data: issuesRes } = useQuery({
     queryKey: ['check-issues', taskId],
     queryFn: () => getCheckIssueList(taskId!),
-    enabled: !!taskId,
+    enabled: !!taskId && taskRes?.data?.status !== 'draft',
   });
 
   const task = taskRes?.data;
@@ -59,7 +68,7 @@ export function ConsistencyDetailPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="secondary">导出报告</Button>
-          <Button variant="primary">发起复检</Button>
+          {task.status === 'draft' ? <TaskDispatchButton taskId={task.id} /> : <Button variant="primary">发起复检</Button>}
         </div>
       </div>
 

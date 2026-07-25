@@ -76,8 +76,7 @@ export interface SessionInfo {
 
 /** 登录请求 */
 export interface LoginRequest {
-  tenant_slug: string
-  email: string
+  username: string
   password: string
   remember_me?: boolean
 }

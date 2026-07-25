@@ -1,6 +1,8 @@
 import type { Project } from '@/types/common';
 import { create } from 'zustand';
 import { listProjects } from '@/services/projects';
+import { toast } from '@/components/ui/Toast';
+import { getRequestErrorMessage } from '@/utils/errorHandler';
 
 interface ProjectState {
   projects: Project[];
@@ -26,8 +28,8 @@ export const useProjectStore = create<ProjectState>((set) => ({
     try {
       const res = await listProjects({ page_size: 100 });
       set({ projects: res.data.items });
-    } catch {
-      /* silent fail */
+    } catch (error) {
+      toast.error(getRequestErrorMessage(error, '项目列表加载失败'));
     }
   },
 }));

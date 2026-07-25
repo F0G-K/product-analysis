@@ -8,8 +8,7 @@ import { getErrorMessage } from '@/utils/errorHandler';
 export function LoginPage() {
   const navigate = useNavigate();
   const { login } = useAuth();
-  const [tenantSlug, setTenantSlug] = useState('');
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -22,8 +21,7 @@ export function LoginPage() {
 
     try {
       const result = await login({
-        tenant_slug: tenantSlug,
-        email,
+        username,
         password,
         remember_me: rememberMe,
       });
@@ -47,20 +45,10 @@ export function LoginPage() {
       <h2 className="text-lg font-semibold text-gray-800 text-center">登录</h2>
 
       <Input
-        label="租户标识"
-        placeholder="请输入租户标识"
-        value={tenantSlug}
-        onChange={(e) => setTenantSlug(e.target.value)}
-        fullWidth
-        required
-      />
-
-      <Input
-        label="邮箱"
-        type="email"
-        placeholder="请输入邮箱"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        label="账号"
+        placeholder="请输入账号"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
         fullWidth
         required
       />
@@ -93,6 +81,10 @@ export function LoginPage() {
       {error && (
         <div className="text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</div>
       )}
+
+      <div className="text-xs text-gray-500 bg-gray-50 rounded-lg px-3 py-2 text-center">
+        默认账号：admin　默认密码：admin
+      </div>
 
       <Button type="submit" fullWidth loading={loading}>
         登录

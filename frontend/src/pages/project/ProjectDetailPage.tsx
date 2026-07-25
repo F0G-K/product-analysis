@@ -9,10 +9,12 @@ import { Skeleton } from '@/components/ui/Skeleton';
 import { Tabs } from '@/components/ui/Tabs';
 import { useState } from 'react';
 import { formatDate } from '@/utils/format';
+import { CreateAnalysisDialog } from '@/components/create/CreateAnalysisDialog';
 
 export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
   const [tab, setTab] = useState('overview');
+  const [createOpen, setCreateOpen] = useState(false);
 
   const { data: projectRes, isLoading } = useQuery({
     queryKey: ['project', projectId],
@@ -46,7 +48,7 @@ export function ProjectDetailPage() {
           <Link to={`/projects/${projectId}/settings`}>
             <Button variant="secondary">项目设置</Button>
           </Link>
-          <Button variant="primary">新建分析</Button>
+          <Button variant="primary" onClick={() => setCreateOpen(true)}>新建分析</Button>
         </div>
       </div>
 
@@ -112,6 +114,14 @@ export function ProjectDetailPage() {
       {tab === 'members' && (
         <div className="text-center py-8 text-sm text-gray-400">成员管理（功能开发中）</div>
       )}
+
+      <CreateAnalysisDialog
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        initialProjectId={projectId}
+        initialTaskType="assessment"
+        allowTaskTypeChange
+      />
     </div>
   );
 }

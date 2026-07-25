@@ -9,7 +9,13 @@ from fastapi import FastAPI
 from fastapi.exceptions import RequestValidationError
 from redis.asyncio import Redis
 
+from backend.analysis_tasks.service import AnalysisTaskCreationService
+from backend.api.analysis_tasks import router as analysis_tasks_router
+from backend.api.auth import router as auth_router
+from backend.api.projects import router as projects_router
 from backend.api.tasks import router as tasks_router
+from backend.auth.bootstrap import ensure_development_identity
+from backend.auth.service import auth_service, resolve_task_actor
 from backend.core.celery_app import celery_app
 from backend.core.database import create_database
 from backend.core.errors import AppError
@@ -19,12 +25,18 @@ from backend.infrastructure.redis_adapters import (
     RedisAnalysisInputStore,
     RedisEventPublisher,
 )
+from backend.middleware.authentication import AuthenticationMiddleware
 from backend.middleware.errors import (
     app_error_handler,
     unexpected_error_handler,
     validation_error_handler,
 )
 from backend.middleware.request_context import RequestIDMiddleware
+from backend.models.base import Base
+from backend.models.identity import TenantModel, UserModel  # noqa: F401
+from backend.models.project import ProjectMemberModel, ProjectModel  # noqa: F401
+from backend.models.task import TaskModel  # noqa: F401
+from backend.projects.service import ProjectService
 from backend.repositories.task_repository import SQLAlchemyTaskRepositoryFactory
 from backend.scheduling.service import TaskSchedulerService
 
@@ -38,12 +50,35 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         max_overflow=settings.database_max_overflow,
     )
     redis = Redis.from_url(settings.redis_url, decode_responses=True)
+    repository_factory = SQLAlchemyTaskRepositoryFactory(session_factory)
+    input_store = RedisAnalysisInputStore(redis)
+    project_service = ProjectService(session_factory)
+    app.state.project_service = project_service
     app.state.task_scheduler_service = TaskSchedulerService(
-        SQLAlchemyTaskRepositoryFactory(session_factory),
+        repository_factory,
         CeleryTaskQueue(celery_app),
         RedisEventPublisher(redis),
-        RedisAnalysisInputStore(redis),
+        input_store,
     )
+    app.state.analysis_task_creation_service = AnalysisTaskCreationService(
+        repository_factory,
+        input_store,
+        project_service,
+        settings,
+    )
+    if settings.environment == "development":
+        async with engine.begin() as connection:
+            await connection.run_sync(
+                Base.metadata.create_all,
+                tables=[
+                    TenantModel.__table__,
+                    UserModel.__table__,
+                    ProjectModel.__table__,
+                    ProjectMemberModel.__table__,
+                    TaskModel.__table__,
+                ],
+            )
+        await ensure_development_identity(session_factory, auth_service.user)
     try:
         yield
     finally:
@@ -68,12 +103,15 @@ def create_app(*, actor_resolver: Any | None = None) -> FastAPI:
             "environment": settings.environment,
         }
 
-    if actor_resolver is not None:
-        app.state.task_actor_resolver = actor_resolver
+    app.state.task_actor_resolver = actor_resolver or resolve_task_actor
+    app.add_middleware(AuthenticationMiddleware)
     app.add_middleware(RequestIDMiddleware)
     app.add_exception_handler(AppError, app_error_handler)
     app.add_exception_handler(RequestValidationError, validation_error_handler)
     app.add_exception_handler(Exception, unexpected_error_handler)
+    app.include_router(auth_router, prefix="/api/v1")
+    app.include_router(projects_router, prefix="/api/v1")
+    app.include_router(analysis_tasks_router, prefix="/api/v1")
     app.include_router(tasks_router, prefix="/api/v1")
     return app
 

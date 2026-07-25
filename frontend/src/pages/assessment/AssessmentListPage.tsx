@@ -16,6 +16,7 @@ import { Select } from '@/components/ui/Select';
 import { PRIORITY_MAP } from '@/utils/constants';
 import { formatDate } from '@/utils/format';
 import type { Task } from '@/types/task';
+import { CreateAnalysisDialog } from '@/components/create/CreateAnalysisDialog';
 
 const columns: TableColumn<Task>[] = [
   { key: 'title', title: '任务名称', dataIndex: 'title', render: (v, r) => (
@@ -27,7 +28,7 @@ const columns: TableColumn<Task>[] = [
   { key: 'model', title: '模型版本', dataIndex: 'model_version', align: 'center', render: (v) => (
     <span className="text-xs text-gray-500">{String(v ?? '-')}</span>
   )},
-  { key: 'creator', title: '创建人', dataIndex: 'created_by_name' },
+  { key: 'creator', title: '创建人', render: (_, r) => r.created_by.name ?? '我' },
   { key: 'time', title: '时间', render: (_, r) => (
     <span className="text-xs text-gray-400">{formatDate(r.created_at)}</span>
   )},
@@ -39,6 +40,7 @@ export function AssessmentListPage() {
   const { page, pageSize, setPage } = usePagination();
   const [status, setStatus] = useState('');
   const [search, setSearch] = useState('');
+  const [createOpen, setCreateOpen] = useState(false);
   const debouncedSearch = useDebounce(search);
 
   const { data, isLoading } = useQuery({
@@ -63,7 +65,7 @@ export function AssessmentListPage() {
           <h1 className="text-lg font-semibold text-gray-800">需求价值评估</h1>
           <span className="text-xs text-gray-400">评估模型 V2.1 · 大模型版本: Claude-5-Opus</span>
         </div>
-        <Button variant="primary">+ 新建评估</Button>
+        <Button variant="primary" onClick={() => setCreateOpen(true)}>+ 新建评估</Button>
       </div>
 
       <FilterBar>
@@ -102,6 +104,12 @@ export function AssessmentListPage() {
       />
 
       <PaginationUI current={page} total={total} pageSize={pageSize} onChange={setPage} />
+
+      <CreateAnalysisDialog
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        initialTaskType="assessment"
+      />
     </div>
   );
 }

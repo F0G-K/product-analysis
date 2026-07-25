@@ -103,6 +103,9 @@ class MemoryInputStore:
     async def get(self, task_id: UUID) -> Mapping[str, Any] | None:
         return self.values.get(task_id)
 
+    async def put(self, task_id: UUID, payload: Mapping[str, Any]) -> None:
+        self.values[task_id] = dict(payload)
+
     async def copy(self, source_task_id: UUID, target_task_id: UUID) -> None:
         self.values[target_task_id] = dict(self.values[source_task_id])
 

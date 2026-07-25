@@ -1,7 +1,9 @@
 import { createBrowserRouter, Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthStore } from '@/stores/authStore';
 import { useProjectStore } from '@/stores/projectStore';
+import { getCurrentUser } from '@/services/auth';
+import { Spinner } from '@/components/ui/Spinner';
 
 // Layouts (lazy loaded later)
 import { AppLayout } from '@/components/layout/AppLayout';
@@ -33,15 +35,32 @@ import { AdminPage } from '@/pages/settings/AdminPage';
 // Auth guard
 function AuthGuard() {
   const isAuthenticated = useAuthStore((s) => s.isAuthenticated);
+  const accessToken = useAuthStore((s) => s.accessToken);
+  const setUser = useAuthStore((s) => s.setUser);
+  const logout = useAuthStore((s) => s.logout);
   const location = useLocation();
+  const [checking, setChecking] = useState(true);
 
-  // 开发模式跳过登录
-  if (import.meta.env.VITE_SKIP_AUTH === 'true') {
-    return <Outlet />;
-  }
+  useEffect(() => {
+    if (!isAuthenticated || !accessToken) {
+      setChecking(false);
+      return;
+    }
+    setChecking(true);
+    getCurrentUser()
+      .then((res) => {
+        if (res.code === 0) setUser(res.data);
+        else logout();
+      })
+      .catch(() => logout())
+      .finally(() => setChecking(false));
+  }, [accessToken, isAuthenticated, logout, setUser]);
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !accessToken) {
     return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+  if (checking) {
+    return <div className="min-h-screen flex items-center justify-center"><Spinner size="lg" /></div>;
   }
   return <Outlet />;
 }

@@ -2,17 +2,14 @@ import { Outlet } from 'react-router-dom';
 import { useEffect } from 'react';
 import { Sidebar } from './Sidebar';
 import { Topbar } from './Topbar';
-import { useAuth } from '@/hooks/useAuth';
 import { useProjectStore } from '@/stores/projectStore';
 
 export function AppLayout() {
-  const { refreshUser } = useAuth();
   const fetchProjects = useProjectStore((s) => s.fetchProjects);
 
   useEffect(() => {
-    refreshUser();
     fetchProjects();
-  }, [refreshUser, fetchProjects]);
+  }, [fetchProjects]);
 
   return (
     <div className="flex min-h-screen bg-gray-50">

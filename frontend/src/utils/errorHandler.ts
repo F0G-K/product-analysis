@@ -1,3 +1,5 @@
+import axios from 'axios'
+import type { ApiErrorResponse } from '@/types/api'
 import { ERROR_MESSAGES } from './constants'
 
 /**
@@ -19,4 +21,12 @@ export function isAuthError(code: number): boolean {
  */
 export function isRateLimitError(code: number): boolean {
   return code === 429
+}
+
+/** 将接口异常转换为可展示文案 */
+export function getRequestErrorMessage(error: unknown, fallback = '操作失败'): string {
+  if (axios.isAxiosError<ApiErrorResponse>(error)) {
+    return error.response?.data?.message || error.message || fallback
+  }
+  return error instanceof Error ? error.message : fallback
 }

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { listProjects } from '@/services/projects';
@@ -6,9 +7,11 @@ import { Badge } from '@/components/ui/Badge';
 import { Button } from '@/components/ui/Button';
 import { Skeleton } from '@/components/ui/Skeleton';
 import { formatDate } from '@/utils/format';
+import { CreateProjectDialog } from '@/components/create/CreateProjectDialog';
 
 export function ProjectListPage() {
   const navigate = useNavigate();
+  const [createOpen, setCreateOpen] = useState(false);
   const { data, isLoading } = useQuery({
     queryKey: ['projects'],
     queryFn: () => listProjects(),
@@ -23,7 +26,7 @@ export function ProjectListPage() {
           <h1 className="text-lg font-semibold text-gray-800">项目与数据源</h1>
           <p className="text-xs text-gray-400 mt-0.5">项目概览 · 数据源管理 · 成员协作</p>
         </div>
-        <Button variant="primary">+ 新建项目</Button>
+        <Button variant="primary" onClick={() => setCreateOpen(true)}>+ 新建项目</Button>
       </div>
 
       {isLoading ? (
@@ -60,6 +63,8 @@ export function ProjectListPage() {
           )}
         </div>
       )}
+
+      <CreateProjectDialog open={createOpen} onClose={() => setCreateOpen(false)} />
     </div>
   );
 }

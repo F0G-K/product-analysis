@@ -14,6 +14,7 @@ import { TaskStatusBadge } from '@/components/task/TaskStatusBadge';
 import { Select } from '@/components/ui/Select';
 import { formatDate } from '@/utils/format';
 import type { Task } from '@/types/task';
+import { CreateAnalysisDialog } from '@/components/create/CreateAnalysisDialog';
 
 const columns: TableColumn<Task>[] = [
   { key: 'title', title: '检查任务', dataIndex: 'title', render: (v) => (
@@ -22,7 +23,7 @@ const columns: TableColumn<Task>[] = [
   { key: 'status', title: '状态', align: 'center', render: (_, r) => (
     <TaskStatusBadge status={r.status} />
   )},
-  { key: 'creator', title: '创建人', dataIndex: 'created_by_name' },
+  { key: 'creator', title: '创建人', render: (_, r) => r.created_by.name ?? '我' },
   { key: 'time', title: '时间', render: (_, r) => (
     <span className="text-xs text-gray-400">{formatDate(r.created_at)}</span>
   )},
@@ -34,12 +35,13 @@ export function ConsistencyListPage() {
   const { page, pageSize, setPage } = usePagination();
   const [status, setStatus] = useState('');
   const [search, setSearch] = useState('');
+  const [createOpen, setCreateOpen] = useState(false);
   const debouncedSearch = useDebounce(search);
 
   const { data, isLoading } = useQuery({
     queryKey: ['tasks', 'check', { page, pageSize, status, search: debouncedSearch, projectId: currentProjectId }],
     queryFn: () => listTasks({
-      task_type: 'check',
+      task_type: 'consistency_check',
       page,
       page_size: pageSize,
       ...(status && { status }),
@@ -58,7 +60,7 @@ export function ConsistencyListPage() {
           <h1 className="text-lg font-semibold text-gray-800">交付物一致性检查</h1>
           <p className="text-xs text-gray-400 mt-0.5">基线对比 · 规则引擎 · 问题追踪</p>
         </div>
-        <Button variant="primary">+ 新建检查</Button>
+        <Button variant="primary" onClick={() => setCreateOpen(true)}>+ 新建检查</Button>
       </div>
 
       <FilterBar>
@@ -84,6 +86,11 @@ export function ConsistencyListPage() {
 
       <Table columns={columns} data={items} loading={isLoading} rowKey="id" onRowClick={(r) => navigate(`/consistency/${r.id}`)} />
       <PaginationUI current={page} total={total} pageSize={pageSize} onChange={setPage} />
+      <CreateAnalysisDialog
+        open={createOpen}
+        onClose={() => setCreateOpen(false)}
+        initialTaskType="consistency_check"
+      />
     </div>
   );
 }

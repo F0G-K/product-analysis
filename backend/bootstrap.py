@@ -164,5 +164,8 @@ class _RedisInputStoreAdapter:
     async def get(self, task_id: UUID) -> Mapping[str, Any] | None:
         return await self._store.get(task_id)
 
+    async def put(self, task_id: UUID, payload: Mapping[str, Any]) -> None:
+        await self._store.put(task_id, payload)
+
     async def copy(self, source_task_id: UUID, target_task_id: UUID) -> None:
         await self._store.copy(source_task_id, target_task_id)

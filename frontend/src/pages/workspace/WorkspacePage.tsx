@@ -119,7 +119,7 @@ export function WorkspacePage() {
                       </span>
                       <div className="text-xs text-gray-400 mt-0.5">
                         {task.task_type === 'assessment' && '需求价值评估'}
-                        {task.task_type === 'check' && '一致性检查'}
+                        {task.task_type === 'consistency_check' && '一致性检查'}
                         {task.task_type === 'attribution' && '问题归因'}
                       </div>
                     </div>
@@ -166,7 +166,7 @@ function getTaskLink(task: { task_type: string; id: string }): string {
   switch (task.task_type) {
     case 'assessment':
       return `/assessment/${task.id}`;
-    case 'check':
+    case 'consistency_check':
       return `/consistency/${task.id}`;
     case 'attribution':
       return `/attribution/${task.id}`;

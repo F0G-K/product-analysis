@@ -11,6 +11,8 @@ import { CONFIDENCE_MAP, ATTRIBUTION_CATEGORY_MAP } from '@/utils/constants';
 import { formatDate } from '@/utils/format';
 import { useState } from 'react';
 import type { TimelineEvent } from '@/types/attribution';
+import { getTask } from '@/services/tasks';
+import { TaskDispatchButton } from '@/components/task/TaskDispatchButton';
 
 export function AttributionDetailPage() {
   const { taskId } = useParams<{ taskId: string }>();
@@ -18,20 +20,27 @@ export function AttributionDetailPage() {
 
   const { data: taskRes, isLoading } = useQuery({
     queryKey: ['attribution', taskId],
-    queryFn: () => getAttributionDetail(taskId!),
+    queryFn: async () => {
+      try {
+        return await getAttributionDetail(taskId!);
+      } catch {
+        const response = await getTask(taskId!);
+        return { ...response, data: { ...response.data, release_version_id: '' } };
+      }
+    },
     enabled: !!taskId,
   });
 
   const { data: timelineRes } = useQuery({
     queryKey: ['attribution-timeline', taskId],
     queryFn: () => getTimeline(taskId!),
-    enabled: !!taskId,
+    enabled: !!taskId && taskRes?.data?.status !== 'draft',
   });
 
   const { data: resultsRes } = useQuery({
     queryKey: ['attribution-results', taskId],
     queryFn: () => getAttributionResults(taskId!),
-    enabled: !!taskId,
+    enabled: !!taskId && taskRes?.data?.status !== 'draft',
   });
 
   const task = taskRes?.data;
@@ -62,6 +71,7 @@ export function AttributionDetailPage() {
         </div>
         <div className="flex items-center gap-2">
           <Button variant="secondary">导出报告</Button>
+          {task.status === 'draft' && <TaskDispatchButton taskId={task.id} />}
           {task.status === 'pending_review' && (
             <Button variant="primary">确认结论</Button>
           )}

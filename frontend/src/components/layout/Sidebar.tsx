@@ -4,6 +4,7 @@ import { useAuthStore } from '@/stores/authStore';
 
 const navItems = [
   { to: '/', icon: 'gauge', label: '工作台' },
+  { to: '/chat', icon: 'comments', label: 'AI 对话' },
   { to: '/assessment', icon: 'scale-balanced', label: '需求价值评估' },
   { to: '/consistency', icon: 'circle-check', label: '交付物一致性检查' },
   { to: '/attribution', icon: 'magnifying-glass-chart', label: '上线问题归因' },
@@ -100,6 +101,7 @@ export function Sidebar() {
 function getIcon(name: string): string {
   const icons: Record<string, string> = {
     gauge: '⊡',
+    comments: '💬',
     'scale-balanced': '⚖',
     'circle-check': '✓',
     'magnifying-glass-chart': '⊙',

@@ -25,6 +25,7 @@ import { ConsistencyDetailPage } from '@/pages/consistency/ConsistencyDetailPage
 import { AttributionListPage } from '@/pages/attribution/AttributionListPage';
 import { AttributionDetailPage } from '@/pages/attribution/AttributionDetailPage';
 import { ReportsPage } from '@/pages/reports/ReportsPage';
+import { ChatPage } from '@/pages/chat/ChatPage';
 import { ProjectListPage } from '@/pages/project/ProjectListPage';
 import { ProjectDetailPage } from '@/pages/project/ProjectDetailPage';
 import { ProjectSettingsPage } from '@/pages/project/ProjectSettingsPage';
@@ -116,6 +117,7 @@ export const router = createBrowserRouter([
           { path: 'attribution', element: <AttributionListPage /> },
           { path: 'attribution/:taskId', element: <AttributionDetailPage /> },
           { path: 'reports', element: <ReportsPage /> },
+          { path: 'chat', element: <ChatPage /> },
           { path: 'settings/profile', element: <ProfilePage /> },
           { path: 'settings/security', element: <SecurityPage /> },
           { path: 'admin', element: <AdminPage /> },

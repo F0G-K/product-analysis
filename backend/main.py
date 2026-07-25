@@ -10,10 +10,13 @@ from fastapi.exceptions import RequestValidationError
 from redis.asyncio import Redis
 
 from backend.analysis_tasks.service import AnalysisTaskCreationService
+from backend.ai.llm_providers import create_default_provider_factory
 from backend.api.analysis_tasks import router as analysis_tasks_router
 from backend.api.auth import router as auth_router
+from backend.api.chat import router as chat_router
 from backend.api.projects import router as projects_router
 from backend.api.tasks import router as tasks_router
+from backend.api.uploads import router as uploads_router
 from backend.auth.bootstrap import ensure_development_identity
 from backend.auth.service import auth_service, resolve_task_actor
 from backend.core.celery_app import celery_app
@@ -39,6 +42,7 @@ from backend.models.task import TaskModel  # noqa: F401
 from backend.projects.service import ProjectService
 from backend.repositories.task_repository import SQLAlchemyTaskRepositoryFactory
 from backend.scheduling.service import TaskSchedulerService
+from backend.services.chat_service import ChatService
 
 
 @asynccontextmanager
@@ -65,6 +69,19 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
         input_store,
         project_service,
         settings,
+    )
+    provider_factory = create_default_provider_factory(
+        anthropic_api_key=settings.llm_api_key or "",
+        anthropic_base_url=settings.llm_api_base_url,
+        openai_api_key=settings.llm_openai_api_key,
+        openai_base_url=settings.llm_openai_base_url,
+        ollama_base_url=settings.llm_ollama_base_url,
+    )
+    app.state.chat_service = ChatService(
+        provider_factory=provider_factory,
+        default_provider=settings.llm_default_provider,
+        default_model=settings.llm_default_model,
+        task_repository_factory=repository_factory,
     )
     if settings.environment == "development":
         async with engine.begin() as connection:
@@ -113,6 +130,8 @@ def create_app(*, actor_resolver: Any | None = None) -> FastAPI:
     app.include_router(projects_router, prefix="/api/v1")
     app.include_router(analysis_tasks_router, prefix="/api/v1")
     app.include_router(tasks_router, prefix="/api/v1")
+    app.include_router(uploads_router, prefix="/api/v1")
+    app.include_router(chat_router, prefix="/api/v1")
     return app
 
 

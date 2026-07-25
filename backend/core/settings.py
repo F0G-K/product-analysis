@@ -37,6 +37,23 @@ class Settings(BaseSettings):
     llm_max_tokens: int = Field(default=4096, ge=1)
     llm_timeout_seconds: float = Field(default=120, gt=0)
 
+    # OpenAI 兼容 API（DeepSeek / vLLM / 通义千问 / 智谱 等）
+    llm_openai_api_key: str = ""
+    llm_openai_base_url: str = ""
+
+    # Ollama 本地模型
+    llm_ollama_base_url: str = "http://localhost:11434"
+
+    # 默认 LLM provider: anthropic / openai_compatible / ollama
+    llm_default_provider: str = "anthropic"
+
+    # MinerU 云端文档解析 API (https://mineru.net)
+    mineru_api_url: str = "https://mineru.net/api/v4"
+    mineru_token: str = ""
+
+    # 上传文件存储目录（相对工作目录或绝对路径）
+    upload_storage_dir: str = "uploads/documents"
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
